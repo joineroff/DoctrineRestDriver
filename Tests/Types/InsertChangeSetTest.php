@@ -29,7 +29,8 @@ use PHPSQLParser\PHPSQLParser;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\InsertChangeSet
  */
-class InsertChangeSetTest extends \PHPUnit_Framework_TestCase {
+class InsertChangeSetTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -39,7 +40,8 @@ class InsertChangeSetTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createWithRawValues() {
+    public function createWithRawValues() 
+    {
         $parser   = new PHPSQLParser();
         $tokens   = $parser->parse('INSERT INTO products (name, value) VALUES (testname, testvalue)');
         $expected = [
@@ -58,7 +60,8 @@ class InsertChangeSetTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createWithQuotedValues() {
+    public function createWithQuotedValues() 
+    {
         $parser   = new PHPSQLParser();
         $tokens   = $parser->parse('INSERT INTO products (name, value) VALUES ("testname", `testvalue`)');
         $expected = [
@@ -77,7 +80,8 @@ class InsertChangeSetTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createWithIntValue() {
+    public function createWithIntValue() 
+    {
         $parser   = new PHPSQLParser();
         $tokens   = $parser->parse('INSERT INTO products (name, value) VALUES (testname, 1)');
         $expected = [
@@ -95,7 +99,8 @@ class InsertChangeSetTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function values() {
+    public function values() 
+    {
         $parser   = new PHPSQLParser();
         $tokens   = $parser->parse('INSERT INTO products (name, value) VALUES (testname, testvalue)');
         $expected = ['testname', 'testvalue'];
@@ -110,7 +115,8 @@ class InsertChangeSetTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function columns() {
+    public function columns() 
+    {
         $parser   = new PHPSQLParser();
         $tokens   = $parser->parse('INSERT INTO products (name, value) VALUES (testname, testvalue)');
         $expected = ['name', 'value'];

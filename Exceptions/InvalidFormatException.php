@@ -26,14 +26,16 @@ namespace Circle\DoctrineRestDriver\Exceptions;
  *
  * @SuppressWarnings("PHPMD.StaticAccess")
  */
-class InvalidFormatException extends DoctrineRestDriverException {
+class InvalidFormatException extends DoctrineRestDriverException
+{
 
     /**
      * InvalidFormatException constructor
      *
      * @param string $class
      */
-    public function __construct($class) {
+    public function __construct($class) 
+    {
         parent::__construct('Class ' . $class . ' must implement Circle\DoctrineRestDriver\Formatters\Formatter to act as formatter');
     }
 }

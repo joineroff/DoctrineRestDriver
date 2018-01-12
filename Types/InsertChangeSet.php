@@ -24,7 +24,8 @@ namespace Circle\DoctrineRestDriver\Types;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class InsertChangeSet {
+class InsertChangeSet
+{
 
     /**
      * Converts the string with format (key) VALUES (value)
@@ -35,7 +36,8 @@ class InsertChangeSet {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $tokens) {
+    public static function create(array $tokens) 
+    {
         HashMap::assert($tokens, 'tokens');
 
         return array_combine(self::columns($tokens), self::values($tokens));
@@ -47,14 +49,19 @@ class InsertChangeSet {
      * @param  array $tokens
      * @return array
      */
-    public static function columns(array $tokens) {
-        $columns = array_filter($tokens['INSERT'], function($token) {
-            return $token['expr_type'] === 'column-list';
-        });
+    public static function columns(array $tokens) 
+    {
+        $columns = array_filter(
+            $tokens['INSERT'], function ($token) {
+                return $token['expr_type'] === 'column-list';
+            }
+        );
 
-        return array_map(function($column) {
-            return end($column['no_quotes']['parts']);
-        }, end($columns)['sub_tree']);
+        return array_map(
+            function ($column) {
+                return end($column['no_quotes']['parts']);
+            }, end($columns)['sub_tree']
+        );
     }
 
     /**
@@ -65,12 +72,15 @@ class InsertChangeSet {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function values(array $tokens) {
+    public static function values(array $tokens) 
+    {
         $values = explode(',', self::removeBrackets(self::removeSpacesBetweenComma(end($tokens['VALUES'])['base_expr'])));
 
-        return array_map(function($value) {
-            return Value::create($value);
-        }, $values);
+        return array_map(
+            function ($value) {
+                return Value::create($value);
+            }, $values
+        );
     }
 
     /**
@@ -79,7 +89,8 @@ class InsertChangeSet {
      * @param  string $string
      * @return string
      */
-    private static function removeSpacesBetweenComma($string) {
+    private static function removeSpacesBetweenComma($string) 
+    {
         return str_replace(', ', ',', $string);
     }
 
@@ -89,7 +100,8 @@ class InsertChangeSet {
      * @param  string $string
      * @return string
      */
-    private static function removeBrackets($string) {
+    private static function removeBrackets($string) 
+    {
         return preg_replace('/\)$/', '', preg_replace('/^\(/', '', $string));
     }
 }

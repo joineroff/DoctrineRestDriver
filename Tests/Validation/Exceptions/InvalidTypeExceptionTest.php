@@ -30,14 +30,16 @@ use Circle\DoctrineRestDriver\Validation\Exceptions\InvalidTypeException;
  *
  * @SuppressWarnings("PHPMD.StaticAccess")
  */
-class InvalidTypeExceptionTest extends \PHPUnit_Framework_TestCase {
+class InvalidTypeExceptionTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
      * @group  unit
      * @covers ::__construct
      */
-    public function construct() {
+    public function construct() 
+    {
         $exception = new InvalidTypeException('string', 'someKey', 'someValue');
         $this->assertSame('The given value someValue for "someKey" is not of type string', $exception->getMessage());
     }

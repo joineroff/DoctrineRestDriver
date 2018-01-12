@@ -25,26 +25,34 @@ namespace Circle\DoctrineRestDriver\Types;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class SelectSingleResult {
+class SelectSingleResult
+{
 
     /**
      * Returns a valid Doctrine result for SELECT ... WHERE id = <id>
      *
-     * @param  array  $tokens
-     * @param  array  $content
+     * @param  array $tokens
+     * @param  array $content
      * @return string
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $tokens, $content) {
+    public static function create(array $tokens, $content)
+    {
         HashMap::assert($tokens, 'tokens');
         $tableAlias = Table::alias($tokens);
+        $attributeValueMap = array_map(
+            function ($token) use ($content, $tableAlias) {
+                $key   = empty($token['alias']['name']) ? $token['base_expr'] : $token['alias']['name'];
+                $exp = str_replace($tableAlias . '.', '', $token['base_expr']);
+                $value = empty($content[$exp]) ? null : $content[$exp];
 
-        $attributeValueMap = array_map(function($token) use ($content, $tableAlias) {
-            $key   = empty($token['alias']['name']) ? $token['base_expr'] : $token['alias']['name'];
-            $value = $content[str_replace($tableAlias . '.', '', $token['base_expr'])];
-            return [$key => $value];
-        }, $tokens['SELECT']);
+                if ($token['base_expr'] === 'count') {
+                    $value = $content;
+                }
+                return [$key => $value];
+            }, $tokens['SELECT']
+        );
 
         return [ array_reduce($attributeValueMap, 'array_merge', []) ];
     }

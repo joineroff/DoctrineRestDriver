@@ -28,7 +28,8 @@ use Circle\DoctrineRestDriver\Validation\Assertions;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Validation\Assertions
  */
-class AssertionsTest extends \PHPUnit_Framework_TestCase {
+class AssertionsTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -37,7 +38,8 @@ class AssertionsTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function assertClassExistsTest() {
+    public function assertClassExistsTest() 
+    {
         $this->assertSame(null, Assertions::assertClassExists('Circle\DoctrineRestDriver\Tests\Validation\AssertionsTest'));
     }
 
@@ -48,7 +50,8 @@ class AssertionsTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function assertSupportedFetchModeTest() {
+    public function assertSupportedFetchModeTest() 
+    {
         $this->assertSame(\PDO::FETCH_ASSOC, Assertions::assertSupportedFetchMode(\PDO::FETCH_ASSOC));
     }
 }

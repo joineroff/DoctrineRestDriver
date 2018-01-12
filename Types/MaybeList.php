@@ -27,7 +27,8 @@ use Symfony\Component\Config\Definition\Exception\InvalidTypeException;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class MaybeList {
+class MaybeList
+{
 
     /**
      * Asserts if the given value is a maybe list
@@ -39,7 +40,8 @@ class MaybeList {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function assert($value, $varName) {
+    public static function assert($value, $varName) 
+    {
         return !is_array($value) && $value !== null ? Exceptions::InvalidTypeException('MaybeList', $varName, $value) : $value;
     }
 }

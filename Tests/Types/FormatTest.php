@@ -28,7 +28,8 @@ use Circle\DoctrineRestDriver\Types\Format;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\Format
  */
-class FormatTest extends \PHPUnit_Framework_TestCase {
+class FormatTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -37,7 +38,8 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function create() {
+    public function create() 
+    {
         $this->assertInstanceOf('Circle\DoctrineRestDriver\Formatters\Formatter', Format::create([]));
     }
 
@@ -48,7 +50,8 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createWithOptions() {
+    public function createWithOptions() 
+    {
         $this->assertInstanceOf('Circle\DoctrineRestDriver\Formatters\Json', Format::create(['driverOptions' => ['format' => 'json']]));
     }
 
@@ -59,7 +62,8 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function assert() {
+    public function assert() 
+    {
         $formatter = $this->getMockBuilder('Circle\DoctrineRestDriver\Formatters\Formatter')->getMock();
         $this->assertSame($formatter, Format::assert($formatter));
     }

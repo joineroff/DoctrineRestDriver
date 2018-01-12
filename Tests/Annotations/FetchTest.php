@@ -28,7 +28,8 @@ use Circle\DoctrineRestDriver\Annotations\Fetch;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Annotations\Fetch
  */
-class FetchTest extends \PHPUnit_Framework_TestCase {
+class FetchTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -36,10 +37,13 @@ class FetchTest extends \PHPUnit_Framework_TestCase {
      * @covers ::__construct
      * @covers ::getRoute
      */
-    public function getRoute() {
-        $getAll = new Fetch([
+    public function getRoute() 
+    {
+        $getAll = new Fetch(
+            [
             'value' => 'http://www.mySite.com/getAll'
-        ]);
+            ]
+        );
 
         $this->assertSame('http://www.mySite.com/getAll', $getAll->getRoute());
     }

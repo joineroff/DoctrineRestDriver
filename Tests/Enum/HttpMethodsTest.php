@@ -29,7 +29,8 @@ use Circle\DoctrineRestDriver\Enums\SqlOperations;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Enums\HttpMethods
  */
-class HttpMethodsTest extends \PHPUnit_Framework_TestCase {
+class HttpMethodsTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -39,7 +40,8 @@ class HttpMethodsTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function ofSqlOperation() {
+    public function ofSqlOperation() 
+    {
         $this->assertEquals(HttpMethods::GET, HttpMethods::ofSqlOperation(SqlOperations::SELECT));
         $this->assertEquals(HttpMethods::PUT, HttpMethods::ofSqlOperation(SqlOperations::UPDATE));
         $this->assertEquals(HttpMethods::DELETE, HttpMethods::ofSqlOperation(SqlOperations::DELETE));

@@ -28,7 +28,8 @@ use Circle\DoctrineRestDriver\Annotations\Delete;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Annotations\Delete
  */
-class DeleteTest extends \PHPUnit_Framework_TestCase {
+class DeleteTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -39,13 +40,16 @@ class DeleteTest extends \PHPUnit_Framework_TestCase {
      * @covers ::getMethod
      * @covers ::getOptions
      */
-    public function getRoute() {
-        $delete = new Delete([
+    public function getRoute() 
+    {
+        $delete = new Delete(
+            [
             'value'      => 'http://www.mySite.com/delete',
             'statusCode' => 201,
             'method'     => 'DELETE',
             'options'    => []
-        ]);
+            ]
+        );
 
         $this->assertSame('http://www.mySite.com/delete', $delete->getRoute());
         $this->assertSame(201, $delete->getStatusCode());

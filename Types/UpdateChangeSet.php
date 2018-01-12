@@ -24,7 +24,8 @@ namespace Circle\DoctrineRestDriver\Types;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class UpdateChangeSet {
+class UpdateChangeSet
+{
 
     /**
      * Converts the string with format key="value",[key2="value2",]*
@@ -35,18 +36,23 @@ class UpdateChangeSet {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $tokens) {
+    public static function create(array $tokens) 
+    {
         HashMap::assert($tokens, 'tokens');
 
-        $columns = array_map(function($token) {
-            $segments = explode('=', $token['base_expr']);
-            return trim($segments[0]);
-        }, $tokens['SET']);
+        $columns = array_map(
+            function ($token) {
+                $segments = explode('=', $token['base_expr']);
+                return trim($segments[0]);
+            }, $tokens['SET']
+        );
 
-        $values = array_map(function($token) {
-            $segments = explode('=', $token['base_expr']);
-            return trim(Value::create($segments[1]));
-        }, $tokens['SET']);
+        $values = array_map(
+            function ($token) {
+                $segments = explode('=', $token['base_expr']);
+                return trim(Value::create($segments[1]));
+            }, $tokens['SET']
+        );
 
         return array_combine($columns, $values);
     }

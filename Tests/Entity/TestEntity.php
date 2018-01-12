@@ -33,7 +33,8 @@ use Circle\DoctrineRestDriver\Annotations as DataSource;
  * @ORM\Table(name="products")
  * @DataSource\Select("http://127.0.0.1:3000/app_dev.php/mockapi/products")
  */
-class TestEntity {
+class TestEntity
+{
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -63,22 +64,25 @@ class TestEntity {
     /**
      * TestEntity constructor
      */
-    public function __construct() {
+    public function __construct() 
+    {
         $this->categories = new ArrayCollection();
     }
 
     /**
      * @return int
      */
-    public function getId() {
+    public function getId() 
+    {
         return $this->id;
     }
 
     /**
-     * @param  int        $id
+     * @param  int $id
      * @return TestEntity
      */
-    public function setId($id) {
+    public function setId($id) 
+    {
         $this->id = $id;
         return $this;
     }
@@ -86,15 +90,17 @@ class TestEntity {
     /**
      * @return string
      */
-    public function getName() {
+    public function getName() 
+    {
         return $this->name;
     }
 
     /**
-     * @param  string     $name
+     * @param  string $name
      * @return TestEntity
      */
-    public function setName($name) {
+    public function setName($name) 
+    {
         $this->name = $name;
         return $this;
     }
@@ -102,15 +108,17 @@ class TestEntity {
     /**
      * @return string
      */
-    public function getValue() {
+    public function getValue() 
+    {
         return $this->value;
     }
 
     /**
-     * @param  string     $value
+     * @param  string $value
      * @return TestEntity
      */
-    public function setValue($value) {
+    public function setValue($value) 
+    {
         $this->value = $value;
         return $this;
     }
@@ -119,7 +127,8 @@ class TestEntity {
      * @param  AssociatedEntity $category
      * @return TestEntity
      */
-    public function addCategory(AssociatedEntity $category) {
+    public function addCategory(AssociatedEntity $category) 
+    {
         $this->categories->add($category);
         return $this;
     }
@@ -128,7 +137,8 @@ class TestEntity {
      * @param  Collection $categories
      * @return TestEntity
      */
-    public function setCategories(Collection $categories) {
+    public function setCategories(Collection $categories) 
+    {
         $this->categories = $categories;
         return $this;
     }
@@ -136,7 +146,8 @@ class TestEntity {
     /**
      * @return ArrayCollection
      */
-    public function getCategories() {
+    public function getCategories() 
+    {
         return $this->categories;
     }
 }

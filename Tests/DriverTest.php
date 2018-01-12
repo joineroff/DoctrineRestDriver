@@ -28,7 +28,8 @@ use Circle\DoctrineRestDriver\Driver;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Driver
  */
-class DriverTest extends \PHPUnit_Framework_TestCase {
+class DriverTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @var Driver
@@ -38,7 +39,8 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
     /**
      * {@inheritdoc}
      */
-    public function setUp() {
+    public function setUp() 
+    {
         $this->driver = new Driver();
     }
 
@@ -47,7 +49,8 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
      * @group  unit
      * @covers ::getDatabasePlatform
      */
-    public function getDatabasePlatform() {
+    public function getDatabasePlatform() 
+    {
         $this->assertInstanceOf('Doctrine\DBAL\Platforms\MySqlPlatform', $this->driver->getDatabasePlatform());
     }
 
@@ -56,7 +59,8 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
      * @group  unit
      * @covers ::getSchemaManager
      */
-    public function getSchemaManager() {
+    public function getSchemaManager() 
+    {
         $connection = $this->getMockBuilder('Circle\DoctrineRestDriver\Connection')->disableOriginalConstructor()->getMock();
         $this->assertInstanceOf('Doctrine\DBAL\Schema\MySqlSchemaManager', $this->driver->getSchemaManager($connection));
     }
@@ -66,7 +70,8 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
      * @group  unit
      * @covers ::getName
      */
-    public function getNameTest() {
+    public function getNameTest() 
+    {
         $this->assertSame('circle_rest', $this->driver->getName());
     }
 
@@ -75,7 +80,8 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
      * @group  unit
      * @covers ::getDatabase
      */
-    public function getDatabase() {
+    public function getDatabase() 
+    {
         $connection = $this->getMockBuilder('Circle\DoctrineRestDriver\Connection')->disableOriginalConstructor()->getMock();
         $this->assertSame('rest_database', $this->driver->getDatabase($connection));
     }
@@ -86,7 +92,8 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
      * @covers ::connect
      * @covers ::<private>
      */
-    public function connect() {
+    public function connect() 
+    {
         $params = [
             'driverClass'   => 'Circle\DoctrineRestDriver\Driver',
             'driverOptions' => [

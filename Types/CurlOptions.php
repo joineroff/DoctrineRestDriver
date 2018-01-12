@@ -26,7 +26,8 @@ namespace Circle\DoctrineRestDriver\Types;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class CurlOptions extends \ArrayObject {
+class CurlOptions extends \ArrayObject
+{
 
     /**
      * @var array
@@ -50,17 +51,22 @@ class CurlOptions extends \ArrayObject {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $options) {
+    public static function create(array $options) 
+    {
         HashMap::assert($options, 'options');
 
-        $filteredKeys = array_filter(array_keys($options), function ($key) {
-            return strpos($key, 'CURLOPT_') === 0;
-        });
+        $filteredKeys = array_filter(
+            array_keys($options), function ($key) {
+                return strpos($key, 'CURLOPT_') === 0;
+            }
+        );
         $filteredOptions = array_intersect_key($options, array_flip($filteredKeys));
 
-        $keys = array_map(function($key) {
-            return constant($key);
-        }, array_keys($filteredOptions));
+        $keys = array_map(
+            function ($key) {
+                return constant($key);
+            }, array_keys($filteredOptions)
+        );
 
         $optionsWithIntKeys = array_combine($keys, array_values($filteredOptions));
 

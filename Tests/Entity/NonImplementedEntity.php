@@ -29,7 +29,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="nonImplemented")
  */
-class NonImplementedEntity {
+class NonImplementedEntity
+{
 
     /**
      * @ORM\Column(type="integer")
@@ -50,17 +51,19 @@ class NonImplementedEntity {
      *
      * @return int
      */
-    public function getId() {
+    public function getId() 
+    {
         return $this->id;
     }
 
     /**
      * sets the id
      *
-     * @param  int        $id
+     * @param  int $id
      * @return TestEntity
      */
-    public function setId($id) {
+    public function setId($id) 
+    {
         $this->id = $id;
         return $this;
     }
@@ -70,17 +73,19 @@ class NonImplementedEntity {
      *
      * @return string
      */
-    public function getName() {
+    public function getName() 
+    {
         return $this->name;
     }
 
     /**
      * sets the name
      *
-     * @param  string     $name
+     * @param  string $name
      * @return TestEntity
      */
-    public function setName($name) {
+    public function setName($name) 
+    {
         $this->name = $name;
         return $this;
     }

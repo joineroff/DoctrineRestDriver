@@ -27,7 +27,8 @@ use Circle\DoctrineRestDriver\Types\Request;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class HttpAuthentication implements AuthStrategy {
+class HttpAuthentication implements AuthStrategy
+{
 
     /**
      * @var array
@@ -39,14 +40,16 @@ class HttpAuthentication implements AuthStrategy {
      *
      * @param array $config
      */
-    public function __construct(array $config) {
+    public function __construct(array $config) 
+    {
         $this->config = $config;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function transformRequest(Request $request) {
+    public function transformRequest(Request $request) 
+    {
         $options  = $request->getCurlOptions();
         $headers  = empty($options[CURLOPT_HTTPHEADER]) ? [] : $options[CURLOPT_HTTPHEADER];
         array_push($headers, 'Authorization: Basic ' . base64_encode($this->config['user'] . ':' . $this->config['password']));

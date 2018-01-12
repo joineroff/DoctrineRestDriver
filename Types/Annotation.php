@@ -27,7 +27,8 @@ use Circle\DoctrineRestDriver\Annotations\RoutingTable;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class Annotation {
+class Annotation
+{
 
     /**
      * returns the corresponding data source annotation if exists
@@ -37,8 +38,10 @@ class Annotation {
      * @param  string       $method
      * @return DataSource|null
      */
-    public static function get(RoutingTable $annotations, $entityAlias, $method) {
-        if (!self::exists($annotations, $entityAlias, $method)) return null;
+    public static function get(RoutingTable $annotations, $entityAlias, $method) 
+    {
+        if (!self::exists($annotations, $entityAlias, $method)) { return null;
+        }
 
         return $annotations->get($entityAlias)->$method();
     }
@@ -51,7 +54,8 @@ class Annotation {
      * @param  string       $method
      * @return boolean
      */
-    public static function exists(RoutingTable $annotations = null, $entityAlias, $method) {
+    public static function exists(RoutingTable $annotations = null, $entityAlias, $method) 
+    {
         return !empty($annotations) && $annotations->get($entityAlias) !== null && $annotations->get($entityAlias)->$method() !== null;
     }
 }

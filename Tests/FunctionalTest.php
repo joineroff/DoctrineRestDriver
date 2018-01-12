@@ -34,7 +34,8 @@ use Doctrine\ORM\EntityManager;
  * @SuppressWarnings("PHPMD.TooManyPublicMethods")
  * @SuppressWarnings("PHPMD.StaticAccess")
  */
-class FunctionalTest extends WebTestCase {
+class FunctionalTest extends WebTestCase
+{
 
     /**
      * @var EntityManager
@@ -44,7 +45,8 @@ class FunctionalTest extends WebTestCase {
     /**
      * {@inheritdoc}
      */
-    public function setUp() {
+    public function setUp() 
+    {
         static::bootKernel();
         $this->em = static::$kernel->getContainer()->get('doctrine.orm.default_entity_manager');
     }
@@ -58,7 +60,8 @@ class FunctionalTest extends WebTestCase {
      * @covers Circle\DoctrineRestDriver\Statement::<private>
      * @covers Circle\DoctrineRestDriver\MetaData
      */
-    public function find() {
+    public function find() 
+    {
         $entity = $this->em->find('Circle\DoctrineRestDriver\Tests\Entity\TestEntity', 1);
         $this->assertSame(1,         $entity->getId());
         $this->assertSame('MyName',  $entity->getName());
@@ -75,7 +78,8 @@ class FunctionalTest extends WebTestCase {
      * @covers Circle\DoctrineRestDriver\MetaData
      * @expectedException \Exception
      */
-    public function findNonExisting() {
+    public function findNonExisting() 
+    {
         $this->em->find('Circle\DoctrineRestDriver\Tests\Entity\TestEntity', 2);
     }
 
@@ -88,7 +92,8 @@ class FunctionalTest extends WebTestCase {
      * @covers Circle\DoctrineRestDriver\Statement::<private>
      * @covers Circle\DoctrineRestDriver\MetaData
      */
-    public function findOneBy() {
+    public function findOneBy() 
+    {
         $entity = $this->em->getRepository('Circle\DoctrineRestDriver\Tests\Entity\TestEntity')->findOneBy(['id' => 1]);
         $this->assertSame(1,          $entity->getId());
         $this->assertSame('MyName',   $entity->getName());
@@ -104,7 +109,8 @@ class FunctionalTest extends WebTestCase {
      * @covers Circle\DoctrineRestDriver\Statement::<private>
      * @covers Circle\DoctrineRestDriver\MetaData
      */
-    public function findBy() {
+    public function findBy() 
+    {
         $entity = $this->em->getRepository('Circle\DoctrineRestDriver\Tests\Entity\TestEntity')->findBy(['id' => 1]);
         $this->assertTrue(is_array($entity));
         $this->assertSame(1,          $entity[0]->getId());
@@ -121,7 +127,8 @@ class FunctionalTest extends WebTestCase {
      * @covers Circle\DoctrineRestDriver\Statement::<private>
      * @covers Circle\DoctrineRestDriver\MetaData
      */
-    public function findAll() {
+    public function findAll() 
+    {
         $entity = $this->em->getRepository('Circle\DoctrineRestDriver\Tests\Entity\TestEntity')->findAll();
         $this->assertTrue(is_array($entity));
 
@@ -143,7 +150,8 @@ class FunctionalTest extends WebTestCase {
      * @covers Circle\DoctrineRestDriver\Statement::<private>
      * @covers Circle\DoctrineRestDriver\MetaData
      */
-    public function persistAndFlush() {
+    public function persistAndFlush() 
+    {
         $entity = new TestEntity();
         $entity->setName('MyName');
         $entity->setValue('MyValue');
@@ -170,7 +178,8 @@ class FunctionalTest extends WebTestCase {
      * @covers Circle\DoctrineRestDriver\Statement::<private>
      * @covers Circle\DoctrineRestDriver\MetaData
      */
-    public function updateAndFlush() {
+    public function updateAndFlush() 
+    {
         $entity = $this->em->find('Circle\DoctrineRestDriver\Tests\Entity\TestEntity', 1);
         $entity->setName('newName');
         $this->em->flush();
@@ -189,7 +198,8 @@ class FunctionalTest extends WebTestCase {
      * @covers Circle\DoctrineRestDriver\Statement::<private>
      * @covers Circle\DoctrineRestDriver\MetaData
      */
-    public function remove() {
+    public function remove() 
+    {
         $entity = $this->em->find('Circle\DoctrineRestDriver\Tests\Entity\TestEntity', 1);
         $this->em->remove($entity);
         $this->em->flush();
@@ -204,7 +214,8 @@ class FunctionalTest extends WebTestCase {
      * @covers Circle\DoctrineRestDriver\Statement::<private>
      * @covers Circle\DoctrineRestDriver\MetaData
      */
-    public function dql() {
+    public function dql() 
+    {
         $entity = $this->em
             ->createQuery('SELECT p FROM Circle\DoctrineRestDriver\Tests\Entity\TestEntity p WHERE p.id = 1')
             ->getSingleResult();
@@ -223,7 +234,8 @@ class FunctionalTest extends WebTestCase {
      * @covers Circle\DoctrineRestDriver\Statement::<private>
      * @covers Circle\DoctrineRestDriver\MetaData
      */
-    public function nativeQuery() {
+    public function nativeQuery() 
+    {
         $mapping = new ResultSetMapping();
         $mapping->addEntityResult('Circle\DoctrineRestDriver\Tests\Entity\TestEntity', 'products');
         $mapping->addFieldResult('products', 'id', 'id');
@@ -248,7 +260,8 @@ class FunctionalTest extends WebTestCase {
      * @covers Circle\DoctrineRestDriver\Statement::<private>
      * @covers Circle\DoctrineRestDriver\MetaData
      */
-    public function dqlWithOrderBy() {
+    public function dqlWithOrderBy() 
+    {
         $entity = $this->em
             ->createQuery('SELECT p FROM Circle\DoctrineRestDriver\Tests\Entity\TestEntity p ORDER BY p.name DESC')
             ->getResult();
@@ -271,7 +284,8 @@ class FunctionalTest extends WebTestCase {
      * @covers Circle\DoctrineRestDriver\Statement::<private>
      * @covers Circle\DoctrineRestDriver\MetaData
      */
-    public function dqlWithObjectParameter() {
+    public function dqlWithObjectParameter() 
+    {
         $entity = $this->em
             ->createQuery('SELECT p FROM Circle\DoctrineRestDriver\Tests\Entity\TestEntity p WHERE p.name = ?1')
             ->setParameter(1, new \DateTime())
@@ -290,7 +304,8 @@ class FunctionalTest extends WebTestCase {
      * @covers Circle\DoctrineRestDriver\MetaData
      * @expectedException \Exception
      */
-    public function nonImplementedEntity() {
+    public function nonImplementedEntity() 
+    {
         $this->em->find('Circle\DoctrineRestDriver\Tests\Entity\NonImplementedEntity', 1);
     }
 
@@ -303,7 +318,8 @@ class FunctionalTest extends WebTestCase {
      * @covers Circle\DoctrineRestDriver\Statement::<private>
      * @covers Circle\DoctrineRestDriver\MetaData
      */
-    public function customIdentifierEntity() {
+    public function customIdentifierEntity() 
+    {
         $this->em->find('Circle\DoctrineRestDriver\Tests\Entity\CustomIdentifierEntity', 1);
     }
 }

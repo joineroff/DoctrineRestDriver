@@ -30,7 +30,8 @@ use PHPSQLParser\PHPSQLParser;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\SelectAllResult
  */
-class SelectAllResultTest extends \PHPUnit_Framework_TestCase {
+class SelectAllResultTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -39,7 +40,8 @@ class SelectAllResultTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function create() {
+    public function create() 
+    {
         $query  = 'SELECT name FROM products';
         $parser = new PHPSQLParser();
         $tokens = $parser->parse($query);
@@ -73,7 +75,8 @@ class SelectAllResultTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function selectAllOrderBy() {
+    public function selectAllOrderBy() 
+    {
         $query  = 'SELECT name FROM products ORDER BY name';
         $parser = new PHPSQLParser();
         $tokens = $parser->parse($query);

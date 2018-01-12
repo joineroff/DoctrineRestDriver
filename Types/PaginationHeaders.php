@@ -24,7 +24,8 @@ namespace Circle\DoctrineRestDriver\Types;
  * @author    Djane Rey Mabelin <thedjaney@gmail.com>
  * @copyright 2016
  */
-class PaginationHeaders {
+class PaginationHeaders
+{
 
     /**
      * Returns Limit and Offset headers
@@ -34,14 +35,17 @@ class PaginationHeaders {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $tokens) {
+    public static function create(array $tokens) 
+    {
         HashMap::assert($tokens, 'tokens');
 
-        if (empty($tokens['LIMIT'])) return [];
+        if (empty($tokens['LIMIT'])) { return [];
+        }
 
         $headers = [];
         array_push($headers, 'Limit: ' . $tokens['LIMIT']['rowcount']);
-        if(empty($tokens['LIMIT']['offset'])) return $headers;
+        if(empty($tokens['LIMIT']['offset'])) { return $headers;
+        }
         array_push($headers, 'Offset: ' . $tokens['LIMIT']['offset']);
         return $headers;
     }

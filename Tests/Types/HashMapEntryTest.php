@@ -28,7 +28,8 @@ use Circle\DoctrineRestDriver\Types\HashMapEntry;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\HashMapEntry
  */
-class HashMapEntryTest extends \PHPUnit_Framework_TestCase {
+class HashMapEntryTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -37,7 +38,8 @@ class HashMapEntryTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function assert() {
+    public function assert() 
+    {
         $hashMap = [
             'test' => 'test'
         ];
@@ -51,7 +53,8 @@ class HashMapEntryTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function assertExists() {
+    public function assertExists() 
+    {
         $hashMap = [
             'test' => 'test'
         ];

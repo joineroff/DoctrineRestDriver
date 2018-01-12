@@ -28,7 +28,8 @@ use Circle\DoctrineRestDriver\Annotations\Update;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Annotations\Update
  */
-class UpdateTest extends \PHPUnit_Framework_TestCase {
+class UpdateTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -36,10 +37,13 @@ class UpdateTest extends \PHPUnit_Framework_TestCase {
      * @covers ::__construct
      * @covers ::getRoute
      */
-    public function getRoute() {
-        $put = new Update([
+    public function getRoute() 
+    {
+        $put = new Update(
+            [
             'value' => 'http://www.mySite.com/put'
-        ]);
+            ]
+        );
 
         $this->assertSame('http://www.mySite.com/put', $put->getRoute());
     }

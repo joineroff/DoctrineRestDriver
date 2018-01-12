@@ -28,7 +28,8 @@ use Circle\DoctrineRestDriver\Types\Str;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\Str
  */
-class StrTest extends \PHPUnit_Framework_TestCase {
+class StrTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -37,7 +38,8 @@ class StrTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function assert() {
+    public function assert() 
+    {
         $this->assertSame('test', Str::assert('test', 'test'));
     }
 
@@ -49,7 +51,8 @@ class StrTest extends \PHPUnit_Framework_TestCase {
      * @SuppressWarnings("PHPMD.StaticAccess")
      * @expectedException \Circle\DoctrineRestDriver\Validation\Exceptions\InvalidTypeException
      */
-    public function assertOnException() {
+    public function assertOnException() 
+    {
         Str::assert([], 'array');
     }
 }

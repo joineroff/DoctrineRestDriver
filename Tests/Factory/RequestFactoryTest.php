@@ -30,7 +30,8 @@ use PHPSQLParser\PHPSQLParser;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Factory\RequestFactory
  */
-class RequestFactoryTest extends \PHPUnit_Framework_TestCase {
+class RequestFactoryTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @var array
@@ -66,15 +67,18 @@ class RequestFactoryTest extends \PHPUnit_Framework_TestCase {
      * @group  unit
      * @covers ::createOne
      */
-    public function createOne() {
+    public function createOne() 
+    {
         $query    = 'SELECT name FROM products t0 WHERE t0.id=1';
         $parser   = new PHPSQLParser();
         $factory  = new RequestFactory();
-        $expected = new Request([
+        $expected = new Request(
+            [
             'method'      => 'get',
             'url'         => 'http://circle.ai/products/1',
             'curlOptions' => $this->requestOptions
-        ]);
+            ]
+        );
 
         $routings = $this->getMockBuilder('Circle\DoctrineRestDriver\Annotations\DataSource')->getMock();
 
@@ -86,18 +90,21 @@ class RequestFactoryTest extends \PHPUnit_Framework_TestCase {
      * @group  unit
      * @covers ::createOne
      */
-    public function createOneWithPaginationHeadersDefault() {
+    public function createOneWithPaginationHeadersDefault() 
+    {
         $query    = 'SELECT name FROM products WHERE LIMIT 5 OFFSET 10';
         $parser   = new PHPSQLParser();
         $factory  = new RequestFactory();
         $this->requestOptions[CURLOPT_HTTPHEADER][] = 'Limit: 5';
         $this->requestOptions[CURLOPT_HTTPHEADER][] = 'Offset: 10';
-        $expected = new Request([
+        $expected = new Request(
+            [
             'method'      => 'get',
             'url'         => 'http://circle.ai/products',
             'curlOptions' => $this->requestOptions,
             'query'       => '',
-        ]);
+            ]
+        );
 
         $routings = $this->getMockBuilder('Circle\DoctrineRestDriver\Annotations\DataSource')->getMock();
 
@@ -109,17 +116,20 @@ class RequestFactoryTest extends \PHPUnit_Framework_TestCase {
      * @group  unit
      * @covers ::createOne
      */
-    public function createWithPaginationParameters() {
+    public function createWithPaginationParameters() 
+    {
         $query    = 'SELECT name FROM products WHERE LIMIT 5 OFFSET 10';
         $parser   = new PHPSQLParser();
         $factory  = new RequestFactory();
         $this->factoryOptions['driverOptions']['pagination_as_query'] = true;
-        $expected = new Request([
+        $expected = new Request(
+            [
             'method'      => 'get',
             'url'         => 'http://circle.ai/products',
             'curlOptions' => $this->requestOptions,
             'query'       => 'per_page=5&page=3',
-        ]);
+            ]
+        );
 
         $routings = $this->getMockBuilder('Circle\DoctrineRestDriver\Annotations\DataSource')->getMock();
 

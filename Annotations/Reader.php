@@ -26,7 +26,8 @@ use Doctrine\Common\Annotations\AnnotationReader;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class Reader {
+class Reader
+{
 
     /**
      * @var AnnotationReader
@@ -36,18 +37,20 @@ class Reader {
     /**
      * Reader constructor.
      */
-    public function __construct() {
+    public function __construct() 
+    {
         $this->annotationReader = new AnnotationReader();
     }
 
     /**
      * returns the route annotation value or null if no annotation exists
      *
-     * @param  \ReflectionClass  $class
-     * @param  string $namespace
+     * @param  \ReflectionClass $class
+     * @param  string           $namespace
      * @return null|string
      */
-    public function read(\ReflectionClass $class, $namespace) {
+    public function read(\ReflectionClass $class, $namespace) 
+    {
         $annotation = $this->annotationReader->getClassAnnotation($class, $namespace);
 
         return $annotation instanceof $namespace ? $annotation : null;

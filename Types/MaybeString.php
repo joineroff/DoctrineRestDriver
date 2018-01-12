@@ -27,7 +27,8 @@ use Symfony\Component\Config\Definition\Exception\InvalidTypeException;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class MaybeString {
+class MaybeString
+{
 
     /**
      * Asserts if the given value is a maybe string
@@ -39,7 +40,8 @@ class MaybeString {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function assert($value, $varName) {
+    public static function assert($value, $varName) 
+    {
         return !is_string($value) && $value !== null ? Exceptions::InvalidTypeException('MaybeString', $varName, $value) : $value;
     }
 }

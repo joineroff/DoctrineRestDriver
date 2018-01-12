@@ -30,7 +30,8 @@ use Circle\DoctrineRestDriver\Types\Request;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Security\NoAuthentication
  */
-class NoAuthenticationTest extends \PHPUnit_Framework_TestCase {
+class NoAuthenticationTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @var NoAuthentication
@@ -40,13 +41,16 @@ class NoAuthenticationTest extends \PHPUnit_Framework_TestCase {
     /**
      * {@inheritdoc}
      */
-    public function setUp() {
-        $this->authentication = new NoAuthentication([
+    public function setUp() 
+    {
+        $this->authentication = new NoAuthentication(
+            [
             'host'          => 'http://circle.ai',
             'user'          => 'Aladdin',
             'password'      => 'OpenSesame',
             'driverOptions' => []
-        ]);
+            ]
+        );
     }
 
     /**
@@ -54,19 +58,24 @@ class NoAuthenticationTest extends \PHPUnit_Framework_TestCase {
      * @group  unit
      * @covers ::transformRequest
      */
-    public function transformRequest() {
+    public function transformRequest() 
+    {
         $expectedOptions = [];
 
-        $request  = new Request([
+        $request  = new Request(
+            [
             'method' => HttpMethods::GET,
             'url'    => 'http://circle.ai'
-        ]);
+            ]
+        );
 
-        $expected = new Request([
+        $expected = new Request(
+            [
             'method'      => HttpMethods::GET,
             'url'         => 'http://circle.ai',
             'curlOptions' => $expectedOptions
-        ]);
+            ]
+        );
 
         $this->assertEquals($expected, $this->authentication->transformRequest($request));
     }

@@ -26,7 +26,8 @@ use Circle\DoctrineRestDriver\Types\HashMap;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class RoutingTable {
+class RoutingTable
+{
 
     /**
      * @var array
@@ -40,15 +41,18 @@ class RoutingTable {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function __construct(array $entities) {
+    public function __construct(array $entities) 
+    {
         HashMap::assert($entities, 'entities');
 
         $aliases            = array_flip($entities);
-        $this->routingTable = array_reduce($entities, function ($carry, $namespace) use ($aliases) {
-            $carry[$aliases[$namespace]] = new Routing($namespace);
+        $this->routingTable = array_reduce(
+            $entities, function ($carry, $namespace) use ($aliases) {
+                $carry[$aliases[$namespace]] = new Routing($namespace);
 
-            return $carry;
-        }, []);
+                return $carry;
+            }, []
+        );
     }
 
     /**
@@ -57,7 +61,8 @@ class RoutingTable {
      * @param  string $alias
      * @return Routing
      */
-    public function get($alias) {
+    public function get($alias) 
+    {
         return !empty($this->routingTable[$alias]) ? $this->routingTable[$alias] : null;
     }
 }

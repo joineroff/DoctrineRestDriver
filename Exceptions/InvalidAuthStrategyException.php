@@ -26,14 +26,16 @@ namespace Circle\DoctrineRestDriver\Exceptions;
  *
  * @SuppressWarnings("PHPMD.StaticAccess")
  */
-class InvalidAuthStrategyException extends DoctrineRestDriverException {
+class InvalidAuthStrategyException extends DoctrineRestDriverException
+{
 
     /**
      * InvalidAuthStrategyException constructor
      *
      * @param string $class
      */
-    public function __construct($class) {
+    public function __construct($class) 
+    {
         parent::__construct('Class ' . $class . ' must implement Circle\DoctrineRestDriver\Types\Request\AuthStrategy to act as authenticator');
     }
 }

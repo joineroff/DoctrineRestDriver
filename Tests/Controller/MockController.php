@@ -28,23 +28,30 @@ use Symfony\Component\HttpFoundation\Response;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class MockController extends Controller {
+class MockController extends Controller
+{
 
     /**
      * Mock action for testing get
      *
-     * @param  string   $id
+     * @param  string $id
      * @return Response
      */
-    public function getAction($id) {
-        if ($id != 1) return new Response('', 404);
+    public function getAction($id) 
+    {
+        if ($id != 1) { return new Response('', 404);
+        }
 
-        return new Response(json_encode([
-            'id'                          => 1,
-            'extremelyStrange_identifier' => 1,
-            'name'                        => 'MyName',
-            'value'                       => 'MyValue',
-        ]));
+        return new Response(
+            json_encode(
+                [
+                'id'                          => 1,
+                'extremelyStrange_identifier' => 1,
+                'name'                        => 'MyName',
+                'value'                       => 'MyValue',
+                ]
+            )
+        );
     }
 
     /**
@@ -52,61 +59,79 @@ class MockController extends Controller {
      *
      * @return Response
      */
-    public function getAllAction() {
-        return new Response(json_encode([
-            [
+    public function getAllAction() 
+    {
+        return new Response(
+            json_encode(
+                [
+                [
                 'id'    => 1,
                 'name'  => 'MyName',
                 'value' => 'MyValue',
-            ],
-            [
+                ],
+                [
                 'id'    => 2,
                 'name'  => 'NextName',
                 'value' => 'NextValue',
-            ]
-        ]));
+                ]
+                ]
+            )
+        );
     }
 
     /**
      * Mock action for testing post
      *
-     * @param  Request  $request
+     * @param  Request $request
      * @return Response
      */
-    public function postAction(Request $request) {
+    public function postAction(Request $request) 
+    {
         $payload = json_decode($request->getContent());
 
-        return new Response(json_encode([
-            'id'    => 1,
-            'name'  => $payload->name,
-            'value' => $payload->value,
-        ]), 201);
+        return new Response(
+            json_encode(
+                [
+                'id'    => 1,
+                'name'  => $payload->name,
+                'value' => $payload->value,
+                ]
+            ), 201
+        );
     }
 
     /**
      * Mock action for testing put
      *
-     * @param  string   $id
+     * @param  string $id
      * @return Response
      */
-    public function putAction($id) {
-        if ($id != 1) return new Response('', 404);
+    public function putAction($id) 
+    {
+        if ($id != 1) { return new Response('', 404);
+        }
 
-        return new Response(json_encode([
-            'id'    => 1,
-            'name'  => 'MyName',
-            'value' => 'MyValue',
-        ]));
+        return new Response(
+            json_encode(
+                [
+                'id'    => 1,
+                'name'  => 'MyName',
+                'value' => 'MyValue',
+                ]
+            )
+        );
     }
 
     /**
      * Mock action for testing delete
      *
-     * @param  string   $id
+     * @param  string $id
      * @return Response
      */
-    public function deleteAction($id) {
-        if ($id != 1) return new Response('', 404);
+    public function deleteAction($id) 
+    {
+        if ($id != 1) { return new Response('', 404);
+        }
 
         return new Response('', 204);
     }
@@ -114,16 +139,21 @@ class MockController extends Controller {
     /**
      * Mock action for testing associated entities
      *
-     * @param  Request  $request
+     * @param  Request $request
      * @return Response
      */
-    public function postCategoriesAction(Request $request) {
+    public function postCategoriesAction(Request $request) 
+    {
         $payload = json_decode($request->getContent());
 
-        return new Response(json_encode([
-            'id'         => 1,
-            'name'       => $payload->name,
-            'product_id' => $payload->product_id,
-        ]), 201);
+        return new Response(
+            json_encode(
+                [
+                'id'         => 1,
+                'name'       => $payload->name,
+                'product_id' => $payload->product_id,
+                ]
+            ), 201
+        );
     }
 }

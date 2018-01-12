@@ -29,10 +29,11 @@ use Circle\DoctrineRestDriver\Types\Request;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  *
- * @coversDefaultClass Circle\DoctrineRestDriver\Transformers\MysqlToRequest
+ * @coversDefaultClass                             Circle\DoctrineRestDriver\Transformers\MysqlToRequest
  * @SuppressWarnings("PHPMD.TooManyPublicMethods")
  */
-class MysqlToRequestTest extends \PHPUnit_Framework_TestCase {
+class MysqlToRequestTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      *
@@ -61,7 +62,8 @@ class MysqlToRequestTest extends \PHPUnit_Framework_TestCase {
     /**
      * {@inheritdoc}
      */
-    public function setUp() {
+    public function setUp() 
+    {
         $this->routings = $this->getMockBuilder('Circle\DoctrineRestDriver\Annotations\RoutingTable')->disableOriginalConstructor()->getMock();
         $this->routings
             ->expects($this->any())
@@ -72,13 +74,15 @@ class MysqlToRequestTest extends \PHPUnit_Framework_TestCase {
     /**
      * Create a MysqlToRequest instance with the given options.
      * 
-     * @param array $optionsOverride
+     * @param  array $optionsOverride
      * @return MysqlToRequest
      * 
      * @author Rob Treacy <email@roberttreacy.com>
      */
-    private function createMysqlToRequest($optionsOverride = []) {
-        $options = array_replace_recursive([
+    private function createMysqlToRequest($optionsOverride = []) 
+    {
+        $options = array_replace_recursive(
+            [
                 'host'          => 'http://www.test.de',
                 'driverOptions' => [
                     'CURLOPT_HTTPHEADER'     => 'Content-Type: application/json',
@@ -89,7 +93,8 @@ class MysqlToRequestTest extends \PHPUnit_Framework_TestCase {
                     'CURLOPT_SSLVERSION'     => 3,
                     'CURLOPT_FOLLOWLOCATION' => true,
                 ]
-            ], $optionsOverride);
+            ], $optionsOverride
+        );
         
         return new MysqlToRequest($options, $this->routings);
     }
@@ -101,13 +106,16 @@ class MysqlToRequestTest extends \PHPUnit_Framework_TestCase {
      * @covers ::transform
      * @covers ::<private>
      */
-    public function selectOne() {
+    public function selectOne() 
+    {
         $query    = 'SELECT name FROM products t0 WHERE t0.id = 1';
-        $expected = new Request([
+        $expected = new Request(
+            [
             'method'      => 'get',
             'url'         => $this->apiUrl . '/products/1',
             'curlOptions' => $this->options
-        ]);
+            ]
+        );
 
         $this->assertEquals($expected, $this->createMysqlToRequest()->transform($query));
     }
@@ -119,14 +127,17 @@ class MysqlToRequestTest extends \PHPUnit_Framework_TestCase {
      * @covers ::transform
      * @covers ::<private>
      */
-    public function selectOneBy() {
+    public function selectOneBy() 
+    {
         $query    = 'SELECT name FROM products t0 WHERE t0.id=1 AND t0.name=myName';
-        $expected = new Request([
+        $expected = new Request(
+            [
             'method'      => 'get',
             'url'         => $this->apiUrl . '/products/1',
             'curlOptions' => $this->options,
             'query'       => 'name=myName'
-        ]);
+            ]
+        );
 
         $this->assertEquals($expected, $this->createMysqlToRequest()->transform($query));
     }
@@ -138,14 +149,17 @@ class MysqlToRequestTest extends \PHPUnit_Framework_TestCase {
      * @covers ::transform
      * @covers ::<private>
      */
-    public function selectBy() {
+    public function selectBy() 
+    {
         $query    = 'SELECT name FROM products t0 WHERE t0.name=myName';
-        $expected = new Request([
+        $expected = new Request(
+            [
             'method'      => 'get',
             'url'         => $this->apiUrl . '/products',
             'curlOptions' => $this->options,
             'query'       => 'name=myName'
-        ]);
+            ]
+        );
 
         $this->assertEquals($expected, $this->createMysqlToRequest()->transform($query));
     }
@@ -157,13 +171,16 @@ class MysqlToRequestTest extends \PHPUnit_Framework_TestCase {
      * @covers ::transform
      * @covers ::<private>
      */
-    public function selectAll() {
+    public function selectAll() 
+    {
         $query    = 'SELECT name FROM products';
-        $expected = new Request([
+        $expected = new Request(
+            [
             'method'      => 'get',
             'url'         => $this->apiUrl . '/products',
             'curlOptions' => $this->options
-        ]);
+            ]
+        );
 
         $this->assertEquals($expected, $this->createMysqlToRequest()->transform($query));
     }
@@ -175,13 +192,16 @@ class MysqlToRequestTest extends \PHPUnit_Framework_TestCase {
      * @covers ::transform
      * @covers ::<private>
      */
-    public function selectJoined() {
+    public function selectJoined() 
+    {
         $query    = 'SELECT p.name FROM products p JOIN product.categories c ON c.id = p.categories_id';
-        $expected = new Request([
+        $expected = new Request(
+            [
             'method'      => 'get',
             'url'         => $this->apiUrl . '/products',
             'curlOptions' => $this->options
-        ]);
+            ]
+        );
 
         $this->assertEquals($expected, $this->createMysqlToRequest()->transform($query));
     }
@@ -193,15 +213,18 @@ class MysqlToRequestTest extends \PHPUnit_Framework_TestCase {
      * @covers ::transform
      * @covers ::<private>
      */
-    public function insert() {
+    public function insert() 
+    {
         $query    = 'INSERT INTO products (name) VALUES ("myName")';
-        $expected = new Request([
+        $expected = new Request(
+            [
             'method'             => 'post',
             'url'                => $this->apiUrl . '/products',
             'curlOptions'        => $this->options,
             'payload'            => json_encode(['name' => 'myName']),
             'expectedStatusCode' => 201
-        ]);
+            ]
+        );
 
         $this->assertEquals($expected, $this->createMysqlToRequest()->transform($query));
     }
@@ -213,14 +236,17 @@ class MysqlToRequestTest extends \PHPUnit_Framework_TestCase {
      * @covers ::transform
      * @covers ::<private>
      */
-    public function update() {
+    public function update() 
+    {
         $query    = 'UPDATE products SET name="myValue" WHERE id=1';
-        $expected = new Request([
+        $expected = new Request(
+            [
             'method'      => 'put',
             'url'         => $this->apiUrl . '/products/1',
             'curlOptions' => $this->options,
             'payload'     => json_encode(['name' => 'myValue'])
-        ]);
+            ]
+        );
 
         $this->assertEquals($expected, $this->createMysqlToRequest()->transform($query));
     }
@@ -232,14 +258,17 @@ class MysqlToRequestTest extends \PHPUnit_Framework_TestCase {
      * @covers ::transform
      * @covers ::<private>
      */
-    public function updateAll() {
+    public function updateAll() 
+    {
         $query    = 'UPDATE products SET name="myValue"';
-        $expected = new Request([
+        $expected = new Request(
+            [
             'method'      => 'put',
             'url'         => $this->apiUrl . '/products',
             'curlOptions' => $this->options,
             'payload'     => json_encode(['name' => 'myValue'])
-        ]);
+            ]
+        );
 
         $this->assertEquals($expected, $this->createMysqlToRequest()->transform($query));
     }
@@ -251,14 +280,17 @@ class MysqlToRequestTest extends \PHPUnit_Framework_TestCase {
      * @covers ::transform
      * @covers ::<private>
      */
-    public function updatePatch() {
+    public function updatePatch() 
+    {
         $query    = 'UPDATE products SET name="myValue" WHERE id=1';
-        $expected = new Request([
+        $expected = new Request(
+            [
             'method'      => 'patch',
             'url'         => $this->apiUrl . '/products/1',
             'curlOptions' => $this->options,
             'payload'     => json_encode(['name' => 'myValue'])
-        ]);
+            ]
+        );
 
         $optionsOverride = [
             'driverOptions' => [
@@ -276,14 +308,17 @@ class MysqlToRequestTest extends \PHPUnit_Framework_TestCase {
      * @covers ::transform
      * @covers ::<private>
      */
-    public function delete() {
+    public function delete() 
+    {
         $query    = 'DELETE FROM products WHERE id=1';
-        $expected = new Request([
+        $expected = new Request(
+            [
             'method'              => 'delete',
             'url'                 => $this->apiUrl . '/products/1',
             'curlOptions'         => $this->options,
             'expectedStatusCode'  => 204
-        ]);
+            ]
+        );
 
         $this->assertEquals($expected, $this->createMysqlToRequest()->transform($query));
     }
@@ -296,7 +331,8 @@ class MysqlToRequestTest extends \PHPUnit_Framework_TestCase {
      * @covers ::<private>
      * @expectedException \Exception
      */
-    public function brokenQuery() {
+    public function brokenQuery() 
+    {
         $query = 'SHIT products WHERE dirt=1';
 
         $this->createMysqlToRequest()->transform($query);

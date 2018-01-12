@@ -27,14 +27,16 @@ namespace Circle\DoctrineRestDriver\Exceptions;
  *
  * @SuppressWarnings("PHPMD.StaticAccess")
  */
-class UnsupportedFetchModeException extends DoctrineRestDriverException {
+class UnsupportedFetchModeException extends DoctrineRestDriverException
+{
 
     /**
      * UnsupportedFetchMode constructor
      *
      * @param int $fetchMode
      */
-    public function __construct($fetchMode) {
+    public function __construct($fetchMode) 
+    {
         parent::__construct('The fetch mode ' . $fetchMode . ' is not supported by this driver');
     }
 }

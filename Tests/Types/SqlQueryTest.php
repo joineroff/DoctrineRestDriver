@@ -28,7 +28,8 @@ use Circle\DoctrineRestDriver\Types\SqlQuery;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\SqlQuery
  */
-class SqlQueryTest extends \PHPUnit_Framework_TestCase {
+class SqlQueryTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -37,7 +38,8 @@ class SqlQueryTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function setParams() {
+    public function setParams() 
+    {
         $query  = 'SELECT name FROM products WHERE id=? AND name=?';
         $params = [
             1,
@@ -54,7 +56,8 @@ class SqlQueryTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function quoteUrl() {
+    public function quoteUrl() 
+    {
         $query    = 'SELECT name FROM http://www.circle.ai';
         $expected = 'SELECT name FROM "http://www.circle.ai"';
         $this->assertSame($expected, SqlQuery::quoteUrl($query));

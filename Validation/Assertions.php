@@ -30,7 +30,8 @@ use Prophecy\Exception\Doubler\ClassNotFoundException;
  *
  * @SuppressWarnings("PHPMD.StaticAccess")
  */
-class Assertions {
+class Assertions
+{
 
     /**
      * Checks if the given fetch mode is supported
@@ -41,7 +42,8 @@ class Assertions {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function assertSupportedFetchMode($fetchMode) {
+    public static function assertSupportedFetchMode($fetchMode) 
+    {
         return $fetchMode !== \PDO::FETCH_ASSOC ? Exceptions::UnsupportedFetchModeException($fetchMode) : $fetchMode;
     }
 
@@ -52,7 +54,9 @@ class Assertions {
      * @return string
      * @throws ClassNotFoundException
      */
-    public static function assertClassExists($className) {
-        if (!empty($className) && !class_exists($className)) throw new ClassNotFoundException('Class not found', $className);
+    public static function assertClassExists($className) 
+    {
+        if (!empty($className) && !class_exists($className)) { throw new ClassNotFoundException('Class not found', $className);
+        }
     }
 }

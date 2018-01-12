@@ -32,7 +32,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @Annotation
  */
-trait Route {
+trait Route
+{
 
     /**
      * @var string
@@ -61,7 +62,8 @@ trait Route {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function __construct(array $values) {
+    public function __construct(array $values) 
+    {
         $settings = new ArrayCollection($values);
 
         $this->route      = Url::assert($settings->get('value'), 'value');
@@ -75,7 +77,8 @@ trait Route {
      *
      * @return string
      */
-    public function getRoute() {
+    public function getRoute() 
+    {
         return $this->route;
     }
 
@@ -84,7 +87,8 @@ trait Route {
      *
      * @return int|null
      */
-    public function getStatusCode() {
+    public function getStatusCode() 
+    {
         return $this->statusCode;
     }
 
@@ -93,7 +97,8 @@ trait Route {
      *
      * @return string|null
      */
-    public function getMethod() {
+    public function getMethod() 
+    {
         return $this->method;
     }
 
@@ -102,7 +107,8 @@ trait Route {
      *
      * @return array|null
      */
-    public function getOptions() {
+    public function getOptions() 
+    {
         return $this->options;
     }
 }

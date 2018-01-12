@@ -29,7 +29,8 @@ use PHPSQLParser\PHPSQLParser;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\UpdateChangeSet
  */
-class UpdateChangeSetTest extends \PHPUnit_Framework_TestCase {
+class UpdateChangeSetTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -38,7 +39,8 @@ class UpdateChangeSetTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function create() {
+    public function create() 
+    {
         $parser   = new PHPSQLParser();
         $tokens   = $parser->parse('UPDATE products set name="testname", value="testvalue" WHERE id=1');
         $expected = [
@@ -56,7 +58,8 @@ class UpdateChangeSetTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createRemovesWhitespace() {
+    public function createRemovesWhitespace() 
+    {
         $parser   = new PHPSQLParser();
         $tokens   = $parser->parse('UPDATE products set name = "testname", value = "testvalue" WHERE id = 1');
         $expected = [

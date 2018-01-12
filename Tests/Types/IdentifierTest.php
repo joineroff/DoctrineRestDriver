@@ -29,7 +29,8 @@ use PHPSQLParser\PHPSQLParser;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\Identifier
  */
-class IdentifierTest extends \PHPUnit_Framework_TestCase {
+class IdentifierTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -38,7 +39,8 @@ class IdentifierTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function create() {
+    public function create() 
+    {
         $parser = new PHPSQLParser();
         $tokens = $parser->parse('SELECT name FROM products WHERE id=1');
 
@@ -52,7 +54,8 @@ class IdentifierTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createWithEmptyId() {
+    public function createWithEmptyId() 
+    {
         $parser = new PHPSQLParser();
         $tokens = $parser->parse('SELECT name FROM products WHERE name="test"');
 
@@ -66,7 +69,8 @@ class IdentifierTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function alias() {
+    public function alias() 
+    {
         $parser = new PHPSQLParser();
         $tokens = $parser->parse('SELECT name FROM products WHERE id=1');
 
@@ -80,7 +84,8 @@ class IdentifierTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function column() {
+    public function column() 
+    {
         $parser = new PHPSQLParser();
         $tokens = $parser->parse('SELECT name FROM products WHERE id=1');
 

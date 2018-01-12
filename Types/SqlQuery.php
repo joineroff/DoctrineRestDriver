@@ -27,7 +27,8 @@ use Symfony\Component\Config\Definition\Exception\InvalidTypeException;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class SqlQuery {
+class SqlQuery
+{
 
     /**
      * replaces param placeholders with corresponding params
@@ -40,12 +41,15 @@ class SqlQuery {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function setParams($query, array $params = []) {
+    public static function setParams($query, array $params = []) 
+    {
         Str::assert($query, 'query');
 
-        return array_reduce($params, function($query, $param) {
-            return strpos($query, '?') ? substr_replace($query, $param, strpos($query, '?'), strlen('?')) : $query;
-        }, $query);
+        return array_reduce(
+            $params, function ($query, $param) {
+                return strpos($query, '?') ? substr_replace($query, $param, strpos($query, '?'), strlen('?')) : $query;
+            }, $query
+        );
     }
 
     /**
@@ -58,11 +62,16 @@ class SqlQuery {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function quoteUrl($query) {
+    public static function quoteUrl($query) 
+    {
         $queryParts = explode(' ', Str::assert($query, 'query'));
 
-        return trim(array_reduce($queryParts, function($carry, $part) {
-            return $carry . (Url::is($part) ? ('"' . $part . '" ') : ($part . ' '));
-        }));
+        return trim(
+            array_reduce(
+                $queryParts, function ($carry, $part) {
+                    return $carry . (Url::is($part) ? ('"' . $part . '" ') : ($part . ' '));
+                }
+            )
+        );
     }
 }

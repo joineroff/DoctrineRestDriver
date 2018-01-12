@@ -26,6 +26,7 @@ namespace Circle\DoctrineRestDriver\Annotations;
  *
  * @Annotation
  */
-class Fetch implements DataSource {
+class Fetch implements DataSource
+{
     use Route;
 }

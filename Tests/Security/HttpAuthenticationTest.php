@@ -30,7 +30,8 @@ use Circle\DoctrineRestDriver\Types\Request;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Security\HttpAuthentication
  */
-class HttpAuthenticationTest extends \PHPUnit_Framework_TestCase {
+class HttpAuthenticationTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @var HttpAuthentication
@@ -40,13 +41,16 @@ class HttpAuthenticationTest extends \PHPUnit_Framework_TestCase {
     /**
      * {@inheritdoc}
      */
-    public function setUp() {
-        $this->authentication = new HttpAuthentication([
+    public function setUp() 
+    {
+        $this->authentication = new HttpAuthentication(
+            [
             'host'          => 'http://circle.ai',
             'user'          => 'Aladdin',
             'password'      => 'OpenSesame',
             'driverOptions' => []
-        ]);
+            ]
+        );
     }
 
     /**
@@ -55,23 +59,28 @@ class HttpAuthenticationTest extends \PHPUnit_Framework_TestCase {
      * @covers ::__construct
      * @covers ::transformRequest
      */
-    public function transformRequest() {
+    public function transformRequest() 
+    {
         $expectedOptions = [
             CURLOPT_HTTPHEADER => [
                 'Authorization: Basic QWxhZGRpbjpPcGVuU2VzYW1l'
             ]
         ];
 
-        $request  = new Request([
+        $request  = new Request(
+            [
             'method' => HttpMethods::GET,
             'url'    => 'http://circle.ai'
-        ]);
+            ]
+        );
 
-        $expected = new Request([
+        $expected = new Request(
+            [
             'method'      => HttpMethods::GET,
             'url'         => 'http://circle.ai',
             'curlOptions' => $expectedOptions
-        ]);
+            ]
+        );
 
         $this->assertEquals($expected, $this->authentication->transformRequest($request));
     }

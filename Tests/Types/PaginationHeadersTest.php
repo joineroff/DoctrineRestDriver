@@ -28,7 +28,8 @@ use PHPSQLParser\PHPSQLParser;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\PaginationHeaders
  */
-class PaginationHeadersTest extends \PHPUnit_Framework_TestCase {
+class PaginationHeadersTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @var array
@@ -43,7 +44,8 @@ class PaginationHeadersTest extends \PHPUnit_Framework_TestCase {
     /**
      * {@inheritdoc}
      */
-    public function setUp() {
+    public function setUp() 
+    {
         $this->options = [
             'security_strategy'  => 'none',
             'CURLOPT_MAXREDIRS'  => 22,
@@ -63,7 +65,8 @@ class PaginationHeadersTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function create() {
+    public function create() 
+    {
         $query  = 'SELECT name FROM products LIMIT 10, 10';
         $parser = new PHPSQLParser();
         $token  = $parser->parse($query);

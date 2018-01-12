@@ -28,7 +28,8 @@ use Circle\DoctrineRestDriver\Types\MaybeString;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\MaybeString
  */
-class MaybeStringTest extends \PHPUnit_Framework_TestCase {
+class MaybeStringTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -37,7 +38,8 @@ class MaybeStringTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function assert() {
+    public function assert() 
+    {
         $this->assertSame('test', MaybeString::assert('test', 'test'));
         $this->assertSame(null, MaybeString::assert(null, 'test'));
     }
@@ -50,7 +52,8 @@ class MaybeStringTest extends \PHPUnit_Framework_TestCase {
      * @SuppressWarnings("PHPMD.StaticAccess")
      * @expectedException \Circle\DoctrineRestDriver\Validation\Exceptions\InvalidTypeException
      */
-    public function assertOnException() {
+    public function assertOnException() 
+    {
         MaybeString::assert([], 'array');
     }
 }

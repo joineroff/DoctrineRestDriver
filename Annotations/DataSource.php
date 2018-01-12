@@ -24,7 +24,8 @@ namespace Circle\DoctrineRestDriver\Annotations;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-interface DataSource {
+interface DataSource
+{
 
     /**
      * returns the route

@@ -24,14 +24,16 @@ namespace Circle\DoctrineRestDriver\Validation\Exceptions;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class NotNilException extends ValidationException {
+class NotNilException extends ValidationException
+{
 
     /**
      * creates the exception
      *
      * @param string $varName
      */
-    public function __construct($varName) {
+    public function __construct($varName) 
+    {
         parent::__construct($varName . ' must not be null');
     }
 }

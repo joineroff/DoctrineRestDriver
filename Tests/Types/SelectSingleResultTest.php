@@ -29,7 +29,8 @@ use PHPSQLParser\PHPSQLParser;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\SelectSingleResult
  */
-class SelectSingleResultTest extends \PHPUnit_Framework_TestCase {
+class SelectSingleResultTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -38,7 +39,8 @@ class SelectSingleResultTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function create() {
+    public function create() 
+    {
         $query  = 'SELECT name FROM products WHERE id=1';
         $parser = new PHPSQLParser();
         $tokens = $parser->parse($query);

@@ -30,7 +30,8 @@ use PHPSQLParser\PHPSQLParser;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\SqlOperation
  */
-class SqlOperationTest extends \PHPUnit_Framework_TestCase {
+class SqlOperationTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -39,7 +40,8 @@ class SqlOperationTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function create() {
+    public function create() 
+    {
         $parser = new PHPSQLParser();
         $tokens = $parser->parse('SELECT name FROM products WHERE id=1');
 

@@ -28,7 +28,8 @@ use Circle\DoctrineRestDriver\Types\Authentication;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\Authentication
  */
-class AuthenticationTest extends \PHPUnit_Framework_TestCase {
+class AuthenticationTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -37,7 +38,8 @@ class AuthenticationTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function create() {
+    public function create() 
+    {
         $this->assertInstanceOf('Circle\DoctrineRestDriver\Security\AuthStrategy', Authentication::create([]));
     }
 
@@ -48,7 +50,8 @@ class AuthenticationTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createWithOptions() {
+    public function createWithOptions() 
+    {
         $this->assertInstanceOf('Circle\DoctrineRestDriver\Security\HttpAuthentication', Authentication::create(['driverOptions' => ['authenticator_class' => 'HttpAuthentication']]));
     }
 
@@ -59,7 +62,8 @@ class AuthenticationTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function assert() {
+    public function assert() 
+    {
         $authStrategy = $this->getMockBuilder('Circle\DoctrineRestDriver\Security\HttpAuthentication')->disableOriginalConstructor()->getMock();
         $this->assertSame($authStrategy, Authentication::assert($authStrategy));
     }

@@ -25,19 +25,22 @@ namespace Circle\DoctrineRestDriver\Types;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class SelectResult {
+class SelectResult
+{
 
     /**
      * Returns a valid Doctrine result for SELECT ...
      *
-     * @param  array  $tokens
-     * @param  array  $content
+     * @param  array $tokens
+     * @param  array $content
      * @return string
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $tokens, $content) {
-        if (empty($content)) return $content;
+    public static function create(array $tokens, $content) 
+    {
+        if (empty($content)) { return $content;
+        }
         return empty($content[0]) ? SelectSingleResult::create($tokens, $content) : SelectAllResult::create($tokens, $content);
     }
 }

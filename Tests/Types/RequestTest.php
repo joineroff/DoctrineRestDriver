@@ -29,7 +29,8 @@ use Circle\DoctrineRestDriver\Types\RestClientOptions;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\Request
  */
-class RequestTest extends \PHPUnit_Framework_TestCase {
+class RequestTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -44,15 +45,18 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
      * @covers ::getExpectedStatusCode
      * @covers ::__toString
      */
-    public function constructAndGetAll() {
+    public function constructAndGetAll() 
+    {
         $options = [];
 
-        $request = new Request([
+        $request = new Request(
+            [
             'method'      => 'get',
             'url'         => 'http://circle.ai',
             'curlOptions' => $options,
             'query'       => 'genious=1'
-        ]);
+            ]
+        );
 
         $this->assertSame('get', $request->getMethod());
         $this->assertSame('http://circle.ai', $request->getUrl());
@@ -70,24 +74,29 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
      * @covers ::__construct
      * @covers ::setCurlOptions
      */
-    public function setCurlOptions() {
+    public function setCurlOptions() 
+    {
         $options = [
             'CURLOPT_HEADER' => true
         ];
 
-        $expected = new Request([
+        $expected = new Request(
+            [
             'method'      => 'get',
             'url'         => 'http://circle.ai',
             'curlOptions' => $options,
             'query'       => 'genious=1'
-        ]);
+            ]
+        );
 
-        $request = new Request([
+        $request = new Request(
+            [
             'method'      => 'get',
             'url'         => 'http://circle.ai',
             'curlOptions' => [],
             'query'       => 'genious=1'
-        ]);
+            ]
+        );
 
         $this->assertEquals($expected, $request->setCurlOptions($options));
     }

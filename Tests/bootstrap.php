@@ -28,6 +28,6 @@ if (!file_exists($file)) {
     echo "\n\e[1;31m"  . 'Install dependencies to run test suite. Run "composer install".' . "\e[0m\n\n";
     exit();
 }
-$autoload = require_once $file;
+$autoload = include_once $file;
 
 return $autoload;

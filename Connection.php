@@ -29,7 +29,8 @@ use Doctrine\DBAL\Connection as AbstractConnection;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class Connection extends AbstractConnection {
+class Connection extends AbstractConnection
+{
 
     /**
      * @var Statement
@@ -48,7 +49,8 @@ class Connection extends AbstractConnection {
      * @param Driver       $driver
      * @param RoutingTable $routings
      */
-    public function __construct(array $params, Driver $driver, RoutingTable $routings, Configuration $config = null, EventManager $eventManager = null) {
+    public function __construct(array $params, Driver $driver, RoutingTable $routings, Configuration $config = null, EventManager $eventManager = null) 
+    {
         $this->routings = $routings;
         parent::__construct($params, $driver, $config, $eventManager);
     }
@@ -59,7 +61,8 @@ class Connection extends AbstractConnection {
      * @param  string $statement
      * @return Statement
      */
-    public function prepare($statement) {
+    public function prepare($statement) 
+    {
         $this->connect();
 
         $this->statement = new Statement($statement, $this->getParams(), $this->routings);
@@ -76,7 +79,8 @@ class Connection extends AbstractConnection {
      *
      * @SuppressWarnings("PHPMD.UnusedFormalParameter")
      */
-    public function lastInsertId($seqName = null) {
+    public function lastInsertId($seqName = null) 
+    {
         return $this->statement->getId();
     }
 
@@ -85,7 +89,8 @@ class Connection extends AbstractConnection {
      *
      * @return Statement
      */
-    public function query() {
+    public function query() 
+    {
         $statement = $this->prepare(func_get_args()[0]);
         $statement->execute();
 

@@ -33,7 +33,8 @@ use Circle\DoctrineRestDriver\Annotations as DataSource;
  * @ORM\Table(name="other_products")
  * @SuppressWarnings("PHPMD")
  */
-class CustomIdentifierEntity {
+class CustomIdentifierEntity
+{
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -45,15 +46,17 @@ class CustomIdentifierEntity {
     /**
      * @return int
      */
-    public function getId() {
+    public function getId() 
+    {
         return $this->extremelyStrange_identifier;
     }
 
     /**
-     * @param  int                    $id
+     * @param  int $id
      * @return CustomIdentifierEntity
      */
-    public function setId($id) {
+    public function setId($id) 
+    {
         $this->extremelyStrange_identifier = $id;
         return $this;
     }

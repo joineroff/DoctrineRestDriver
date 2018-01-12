@@ -26,26 +26,30 @@ use Circle\DoctrineRestDriver\Enums\SqlOperations;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class Payload {
+class Payload
+{
 
     /**
      * Returns an InsertChangeSet::create or InsertChangeSet::create
      * result or null depending on the given tokens array
      *
-     * @param  array       $tokens
-     * @param  array       $options
+     * @param  array $tokens
+     * @param  array $options
      * @return null|string
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $tokens, array $options) {
+    public static function create(array $tokens, array $options) 
+    {
         HashMap::assert($tokens, 'tokens');
 
         $format    = Format::create($options);
         $operation = SqlOperation::create($tokens);
 
-        if ($operation === SqlOperations::INSERT) return $format->encode(InsertChangeSet::create($tokens));
-        if ($operation === SqlOperations::UPDATE) return $format->encode(UpdateChangeSet::create($tokens));
+        if ($operation === SqlOperations::INSERT) { return $format->encode(InsertChangeSet::create($tokens));
+        }
+        if ($operation === SqlOperations::UPDATE) { return $format->encode(UpdateChangeSet::create($tokens));
+        }
 
         return null;
     }

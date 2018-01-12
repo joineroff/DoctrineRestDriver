@@ -28,7 +28,8 @@ use Symfony\Component\Config\Definition\Exception\InvalidTypeException;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class Str {
+class Str
+{
 
     /**
      * Asserts if the given value is a string
@@ -41,7 +42,8 @@ class Str {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function assert($value, $varName) {
+    public static function assert($value, $varName) 
+    {
         NotNil::assert($value, $varName);
         return !is_string($value) ? Exceptions::InvalidTypeException('string', $varName, $value) : $value;
     }

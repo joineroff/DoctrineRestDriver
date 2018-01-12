@@ -30,14 +30,16 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Annotations\RoutingTable
  */
-class RoutingTableTest extends \PHPUnit_Framework_TestCase {
+class RoutingTableTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * {@inheritdoc}
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function setUp() {
+    public function setUp() 
+    {
         AnnotationRegistry::registerFile(__DIR__ . '/../../vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/Entity.php');
         AnnotationRegistry::registerFile(__DIR__ . '/../../vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/Table.php');
         AnnotationRegistry::registerFile(__DIR__ . '/../../vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/Column.php');
@@ -59,7 +61,8 @@ class RoutingTableTest extends \PHPUnit_Framework_TestCase {
      * @covers ::get
      * @covers ::<private>
      */
-    public function get() {
+    public function get() 
+    {
         $entities = [
             'categories'     => 'Circle\DoctrineRestDriver\Tests\Entity\AssociatedEntity',
             'nonImplemented' => 'Circle\DoctrineRestDriver\Tests\Entity\NonImplementedEntity',

@@ -24,7 +24,8 @@ namespace Circle\DoctrineRestDriver\Types;
  * @author    Djane Rey Mabelin <thedjaney@gmail.com>
  * @copyright 2016
  */
-class HttpHeader {
+class HttpHeader
+{
     /**
      * Returns an array containing CURLOPT_HTTPHEADER options that can be added to
      * the PHP internal curl library by using curl_setopt_array
@@ -35,7 +36,8 @@ class HttpHeader {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $options, array $tokens) {
+    public static function create(array $options, array $tokens) 
+    {
         $headers = empty($options['CURLOPT_HTTPHEADER']) ? [] : $options['CURLOPT_HTTPHEADER'];
 
         $headers = empty($headers) ? [] : $headers;

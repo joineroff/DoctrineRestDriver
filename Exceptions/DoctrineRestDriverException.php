@@ -24,4 +24,6 @@ namespace Circle\DoctrineRestDriver\Exceptions;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class DoctrineRestDriverException extends \Exception {}
+class DoctrineRestDriverException extends \Exception
+{
+}

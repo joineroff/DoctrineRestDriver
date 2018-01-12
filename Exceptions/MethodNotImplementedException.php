@@ -28,7 +28,8 @@ namespace Circle\DoctrineRestDriver\Exceptions;
  *
  * @SuppressWarnings("PHPMD.StaticAccess")
  */
-class MethodNotImplementedException extends DoctrineRestDriverException {
+class MethodNotImplementedException extends DoctrineRestDriverException
+{
 
     /**
      * InvalidSqlOperationException constructor
@@ -36,7 +37,8 @@ class MethodNotImplementedException extends DoctrineRestDriverException {
      * @param string $class
      * @param string $method
      */
-    public function __construct($class, $method) {
+    public function __construct($class, $method) 
+    {
         parent::__construct('The method ' . $method . ' in class ' . $class . ' is not implemented');
     }
 }

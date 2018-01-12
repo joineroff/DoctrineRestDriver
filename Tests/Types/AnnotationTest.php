@@ -31,7 +31,8 @@ use PHPSQLParser\PHPSQLParser;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\Annotation
  */
-class AnnotationTest extends \PHPUnit_Framework_TestCase {
+class AnnotationTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -40,7 +41,8 @@ class AnnotationTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function exists() {
+    public function exists() 
+    {
         $routings = new RoutingTable(['products' => 'Circle\DoctrineRestDriver\Tests\Entity\TestEntity']);
 
         $this->assertTrue(Annotation::exists($routings, 'products', 'get'));
@@ -54,11 +56,14 @@ class AnnotationTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function get() {
+    public function get() 
+    {
         $routings   = new RoutingTable(['products' => 'Circle\DoctrineRestDriver\Tests\Entity\TestEntity']);
-        $annotation = new Select([
+        $annotation = new Select(
+            [
             'value' => 'http://127.0.0.1:3000/app_dev.php/mockapi/products'
-        ]);
+            ]
+        );
 
         $this->assertEquals($annotation, Annotation::get($routings, 'products', 'get'));
     }

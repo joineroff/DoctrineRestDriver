@@ -27,12 +27,14 @@ use Circle\DoctrineRestDriver\Types\Request;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class NoAuthentication implements AuthStrategy {
+class NoAuthentication implements AuthStrategy
+{
 
     /**
      * {@inheritdoc}
      */
-    public function transformRequest(Request $request) {
+    public function transformRequest(Request $request) 
+    {
         return $request;
     }
 }

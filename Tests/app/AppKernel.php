@@ -26,14 +26,16 @@ use Symfony\Component\Config\Loader\LoaderInterface;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class AppKernel extends Kernel {
+class AppKernel extends Kernel
+{
 
     /**
      * {@inheritdoc}
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function registerBundles() {
+    public function registerBundles() 
+    {
         return array(
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
@@ -44,28 +46,32 @@ class AppKernel extends Kernel {
     /**
      * {@inheritdoc}
      */
-    public function getRootDir() {
+    public function getRootDir() 
+    {
         return __DIR__;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getCacheDir() {
+    public function getCacheDir() 
+    {
         return dirname(__DIR__).'/app/var/cache/'.$this->getEnvironment();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getLogDir() {
+    public function getLogDir() 
+    {
         return dirname(__DIR__).'/app/var/logs';
     }
 
     /**
      * {@inheritdoc}
      */
-    public function registerContainerConfiguration(LoaderInterface $loader) {
+    public function registerContainerConfiguration(LoaderInterface $loader) 
+    {
         $loader->load($this->getRootDir().'/config/config.yml');
     }
 }

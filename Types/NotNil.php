@@ -27,7 +27,8 @@ use Circle\DoctrineRestDriver\Validation\Exceptions\NotNilException;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class NotNil {
+class NotNil
+{
 
     /**
      * Asserts if the given value is not nil
@@ -39,7 +40,8 @@ class NotNil {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function assert($value, $varName) {
+    public static function assert($value, $varName) 
+    {
         return $value === null ? Exceptions::NotNilException($varName) : $value;
     }
 }

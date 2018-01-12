@@ -27,7 +27,8 @@ use Circle\DoctrineRestDriver\Validation\Exceptions\InvalidTypeException;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class Value {
+class Value
+{
 
     /**
      * Infers the type of a given string
@@ -38,13 +39,17 @@ class Value {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create($value) {
+    public static function create($value) 
+    {
         Str::assert($value, 'value');
-        if (empty($value)) return null;
+        if (empty($value)) { return null;
+        }
 
         $unquoted = preg_replace('/\"|\\\'|\`$/', '', preg_replace('/^\"|\\\'|\`/', '', $value));
-        if (!is_numeric($unquoted))                   return $unquoted;
-        if ((string) intval($unquoted) === $unquoted) return intval($unquoted);
+        if (!is_numeric($unquoted)) {                   return $unquoted;
+        }
+        if ((string) intval($unquoted) === $unquoted) { return intval($unquoted);
+        }
 
         return floatval($unquoted);
     }

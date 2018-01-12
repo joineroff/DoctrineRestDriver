@@ -25,24 +25,43 @@ namespace Circle\DoctrineRestDriver\Types;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class SelectAllResult {
-
+class SelectAllResult
+{
     /**
      * Returns a valid Doctrine result for SELECT ... without WHERE id = <id>
      *
-     * @param  array  $tokens
-     * @param  array  $content
+     * @param  array $tokens
+     * @param  array $content
      * @return string
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $tokens, array $content) {
+    public static function create(array $tokens, array $content)
+    {
         $content = self::orderBy($tokens, $content);
 
-        return array_map(function($entry) use ($tokens) {
-            $row = SelectSingleResult::create($tokens, $entry);
-            return array_pop($row);
-        }, $content);
+        $result = [];
+        if (count($tokens['SELECT']) === 1) {
+            if ($tokens['SELECT'][0]['base_expr'] === 'count') {
+                $token = $tokens['SELECT'][0];
+                $key   = empty($token['alias']['name']) ? $token['base_expr'] : $token['alias']['name'];
+
+                $result[0][$key] = count($content);
+
+                //dump($result);
+                return $result;
+            }
+        }
+
+
+        $result =  array_map(
+            function ($entry) use ($tokens) {
+                $row = SelectSingleResult::create($tokens, $entry);
+                return array_pop($row);
+            }, $content
+        );
+
+        return $result;
     }
 
     /**
@@ -52,25 +71,38 @@ class SelectAllResult {
      * @param  array $content
      * @return array
      */
-    public static function orderBy(array $tokens, array $content) {
-        if (empty($tokens['ORDER'])) return $content;
+    public static function orderBy(array $tokens, array $content)
+    {
+        if (empty($tokens['ORDER'])) {
+            return $content;
+        }
 
-        $sortingRules = array_map(function($token) use ($content) {
-            return [
+        $sortingRules = array_map(
+            function ($token) use ($content) {
+                return [
                 end($token['no_quotes']['parts']),
                 $token['direction']
-            ];
-        }, $tokens['ORDER']);
+                ];
+            }, $tokens['ORDER']
+        );
 
         $reducedSortingRules = array_reduce($sortingRules, 'array_merge', []);
-        $sortArgs            = array_map(function($value) use ($content) {
-            if ($value === 'ASC')  return SORT_ASC;
-            if ($value === 'DESC') return SORT_DESC;
+        $sortArgs            = array_map(
+            function ($value) use ($content) {
+                if ($value === 'ASC') {
+                    return SORT_ASC;
+                }
+                if ($value === 'DESC') {
+                    return SORT_DESC;
+                }
 
-            $contents = [];
-            foreach ($content as $c) array_push($contents, $c[$value]);
-            return $contents;
-        }, $reducedSortingRules);
+                $contents = [];
+                foreach ($content as $c) {
+                    array_push($contents, $c[$value]);
+                }
+                return $contents;
+            }, $reducedSortingRules
+        );
 
         $sortArgs[] = &$content;
         call_user_func_array('array_multisort', $sortArgs);

@@ -26,7 +26,8 @@ use Circle\DoctrineRestDriver\Types\Request;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-interface AuthStrategy {
+interface AuthStrategy
+{
 
     /**
      * Creates a new request that has additional security specific

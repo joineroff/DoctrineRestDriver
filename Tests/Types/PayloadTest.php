@@ -29,7 +29,8 @@ use PHPSQLParser\PHPSQLParser;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\Payload
  */
-class PayloadTest extends \PHPUnit_Framework_TestCase {
+class PayloadTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -38,13 +39,16 @@ class PayloadTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createInsert() {
+    public function createInsert() 
+    {
         $parser   = new PHPSQLParser();
         $tokens   = $parser->parse('INSERT INTO products (name, value) VALUES (testname, testvalue)');
-        $expected = json_encode([
+        $expected = json_encode(
+            [
             'name'  => 'testname',
             'value' => 'testvalue',
-        ]);
+            ]
+        );
 
         $this->assertSame($expected, Payload::create($tokens, []));
     }
@@ -56,13 +60,16 @@ class PayloadTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createUpdate() {
+    public function createUpdate() 
+    {
         $parser   = new PHPSQLParser();
         $tokens   = $parser->parse('UPDATE products set name="testname", value="testvalue" WHERE id=1');
-        $expected = json_encode([
+        $expected = json_encode(
+            [
             'name'  => 'testname',
             'value' => 'testvalue',
-        ]);
+            ]
+        );
 
         $this->assertSame($expected, Payload::create($tokens, []));
     }
@@ -74,7 +81,8 @@ class PayloadTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createSelect() {
+    public function createSelect() 
+    {
         $parser   = new PHPSQLParser();
         $tokens   = $parser->parse('SELECT name FROM products WHERE id=1');
 

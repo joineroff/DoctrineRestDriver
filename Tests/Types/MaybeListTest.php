@@ -28,7 +28,8 @@ use Circle\DoctrineRestDriver\Types\MaybeList;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\MaybeList
  */
-class MaybeListTest extends \PHPUnit_Framework_TestCase {
+class MaybeListTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -37,7 +38,8 @@ class MaybeListTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function assert() {
+    public function assert() 
+    {
         $this->assertSame(null, MaybeList::assert(null, 'null'));
         $this->assertSame([], MaybeList::assert([], 'list'));
     }
@@ -50,7 +52,8 @@ class MaybeListTest extends \PHPUnit_Framework_TestCase {
      * @SuppressWarnings("PHPMD.StaticAccess")
      * @expectedException \Circle\DoctrineRestDriver\Validation\Exceptions\InvalidTypeException
      */
-    public function assertOnException() {
+    public function assertOnException() 
+    {
         MaybeList::assert('hello', 'string');
     }
 }

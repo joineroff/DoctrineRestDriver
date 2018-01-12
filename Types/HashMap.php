@@ -28,7 +28,8 @@ use Circle\DoctrineRestDriver\Validation\Exceptions\InvalidTypeException;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class HashMap {
+class HashMap
+{
 
     /**
      * Asserts if the given value is a hash map
@@ -40,9 +41,12 @@ class HashMap {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function assert($value, $varName) {
-        if(!is_array($value)) return Exceptions::InvalidTypeException('HashMap', $varName, $value);
-        foreach($value as $key => $v) HashMapEntry::assert([$key => $v], $varName);
+    public static function assert($value, $varName) 
+    {
+        if(!is_array($value)) { return Exceptions::InvalidTypeException('HashMap', $varName, $value);
+        }
+        foreach($value as $key => $v) { HashMapEntry::assert([$key => $v], $varName);
+        }
 
         return $value;
     }

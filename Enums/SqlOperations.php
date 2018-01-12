@@ -24,7 +24,8 @@ namespace Circle\DoctrineRestDriver\Enums;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class SqlOperations {
+class SqlOperations
+{
     const INSERT = 'insert';
     const UPDATE = 'update';
     const DELETE = 'delete';

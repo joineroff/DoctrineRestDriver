@@ -29,7 +29,8 @@ use Circle\DoctrineRestDriver\Types\HttpMethod;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\HttpMethod
  */
-class HttpMethodTest extends \PHPUnit_Framework_TestCase {
+class HttpMethodTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -38,7 +39,8 @@ class HttpMethodTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function create() {
+    public function create() 
+    {
         $annotation = $this->getMockBuilder('Circle\DoctrineRestDriver\Annotations\DataSource')->getMock();
         $annotation
             ->expects($this->exactly(2))
@@ -55,7 +57,8 @@ class HttpMethodTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createWithEmptyMethod() {
+    public function createWithEmptyMethod() 
+    {
         $annotation = $this->getMockBuilder('Circle\DoctrineRestDriver\Annotations\DataSource')->getMock();
         $annotation
             ->expects($this->once())

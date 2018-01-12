@@ -30,14 +30,16 @@ use Circle\DoctrineRestDriver\Validation\Exceptions\NotNilException;
  *
  * @SuppressWarnings("PHPMD.StaticAccess")
  */
-class NotNilExceptionTest extends \PHPUnit_Framework_TestCase {
+class NotNilExceptionTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
      * @group  unit
      * @covers ::__construct
      */
-    public function construct() {
+    public function construct() 
+    {
         $exception = new NotNilException('someVar');
         $this->assertSame('someVar must not be null', $exception->getMessage());
     }

@@ -28,7 +28,8 @@ use Circle\DoctrineRestDriver\Annotations\Select;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Annotations\Select
  */
-class SelectTest extends \PHPUnit_Framework_TestCase {
+class SelectTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -36,10 +37,13 @@ class SelectTest extends \PHPUnit_Framework_TestCase {
      * @covers ::__construct
      * @covers ::getRoute
      */
-    public function getRoute() {
-        $get = new Select([
+    public function getRoute() 
+    {
+        $get = new Select(
+            [
             'value' => 'http://www.mySite.com/get'
-        ]);
+            ]
+        );
 
         $this->assertSame('http://www.mySite.com/get', $get->getRoute());
     }

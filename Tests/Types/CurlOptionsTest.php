@@ -28,7 +28,8 @@ use Circle\DoctrineRestDriver\Types\CurlOptions;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\CurlOptions
  */
-class CurlOptionsTest extends \PHPUnit_Framework_TestCase {
+class CurlOptionsTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @var array
@@ -43,7 +44,8 @@ class CurlOptionsTest extends \PHPUnit_Framework_TestCase {
     /**
      * {@inheritdoc}
      */
-    public function setUp() {
+    public function setUp() 
+    {
         $this->options = [
             'security_strategy'  => 'none',
             'CURLOPT_MAXREDIRS'  => 22,
@@ -68,7 +70,8 @@ class CurlOptionsTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function create() {
+    public function create() 
+    {
         $this->assertEquals($this->expected, CurlOptions::create($this->options));
     }
 }

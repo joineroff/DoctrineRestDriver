@@ -28,7 +28,8 @@ use PHPSQLParser\PHPSQLParser;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\OrderingHeaders
  */
-class OrderingHeadersTest extends \PHPUnit_Framework_TestCase {
+class OrderingHeadersTest extends \PHPUnit_Framework_TestCase
+{
 
 
     /**
@@ -39,7 +40,8 @@ class OrderingHeadersTest extends \PHPUnit_Framework_TestCase {
     /**
      * {@inheritdoc}
      */
-    public function setUp() {
+    public function setUp() 
+    {
         $this->expected = [
             'Order: name ASC',
         ];
@@ -52,7 +54,8 @@ class OrderingHeadersTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function create() {
+    public function create() 
+    {
         $query  = 'SELECT name FROM products a ORDER BY name ASC';
         $parser = new PHPSQLParser();
         $token  = $parser->parse($query);

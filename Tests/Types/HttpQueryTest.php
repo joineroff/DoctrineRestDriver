@@ -29,7 +29,8 @@ use PHPSQLParser\PHPSQLParser;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\HttpQuery
  */
-class HttpQueryTest extends \PHPUnit_Framework_TestCase {
+class HttpQueryTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -38,7 +39,8 @@ class HttpQueryTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function create() {
+    public function create() 
+    {
         $parser   = new PHPSQLParser();
         $tokens   = $parser->parse('SELECT name FROM products t0 WHERE t0.id=1 AND t0.value="testvalue" AND t0.name="testname"');
         $expected = 'value=testvalue&name=testname';
@@ -53,7 +55,8 @@ class HttpQueryTest extends \PHPUnit_Framework_TestCase {
      * 
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createWithoutPaginationIsDefault() {
+    public function createWithoutPaginationIsDefault() 
+    {
         $parser   = new PHPSQLParser();
         $tokens   = $parser->parse('SELECT name FROM products WHERE foo="bar" LIMIT 5 OFFSET 15');
         $expected = 'foo=bar';
@@ -68,7 +71,8 @@ class HttpQueryTest extends \PHPUnit_Framework_TestCase {
      * 
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createWithPagination() {
+    public function createWithPagination() 
+    {
         $options = [
             'pagination_as_query' => true,
         ];
@@ -86,7 +90,8 @@ class HttpQueryTest extends \PHPUnit_Framework_TestCase {
      * 
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createWithCustomPagination() {
+    public function createWithCustomPagination() 
+    {
         $options = [
             'pagination_as_query' => true,
             'per_page_param'      => 'newkey_per_page',

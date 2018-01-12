@@ -24,4 +24,6 @@ namespace Circle\DoctrineRestDriver\Validation\Exceptions;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class ValidationException extends \Exception {}
+class ValidationException extends \Exception
+{
+}

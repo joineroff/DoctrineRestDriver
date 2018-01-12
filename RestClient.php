@@ -32,7 +32,8 @@ use Circle\DoctrineRestDriver\Exceptions\RequestFailedException;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class RestClient {
+class RestClient
+{
 
     /**
      * @var CiRestClient
@@ -42,7 +43,8 @@ class RestClient {
     /**
      * RestClient constructor
      */
-    public function __construct() {
+    public function __construct() 
+    {
         $this->restClient = (new RestClientFactory())->createOne([]);
     }
 
@@ -55,7 +57,8 @@ class RestClient {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function send(Request $request) {
+    public function send(Request $request) 
+    {
         $method     = strtolower($request->getMethod());
         $response   = $method === HttpMethods::GET || $method === HttpMethods::DELETE ? $this->restClient->$method($request->getUrlAndQuery(), $request->getCurlOptions()) : $this->restClient->$method($request->getUrlAndQuery(), $request->getPayload(), $request->getCurlOptions());
 

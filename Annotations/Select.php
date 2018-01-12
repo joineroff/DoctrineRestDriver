@@ -29,6 +29,7 @@ use Circle\DoctrineRestDriver\Validation\Assertions;
  *
  * @Annotation
  */
-class Select implements DataSource {
+class Select implements DataSource
+{
     use Route;
 }

@@ -31,7 +31,8 @@ use Circle\DoctrineRestDriver\Types\Request;
  *
  * @SuppressWarnings("PHPMD.StaticAccess")
  */
-class ExceptionsTest extends \PHPUnit_Framework_TestCase {
+class ExceptionsTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -39,7 +40,8 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase {
      * @covers ::invalidTypeException
      * @expectedException \Circle\DoctrineRestDriver\Validation\Exceptions\InvalidTypeException
      */
-    public function invalidTypeExceptionTest() {
+    public function invalidTypeExceptionTest() 
+    {
         Exceptions::invalidTypeException('expected', 'key', 'value');
     }
 
@@ -49,7 +51,8 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase {
      * @covers ::notNilException
      * @expectedException \Circle\DoctrineRestDriver\Validation\Exceptions\NotNilException
      */
-    public function notNilExceptionTest() {
+    public function notNilExceptionTest() 
+    {
         Exceptions::notNilException('test');
     }
 
@@ -62,7 +65,8 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function unsupportedFetchModeExceptionTest() {
+    public function unsupportedFetchModeExceptionTest() 
+    {
         Exceptions::unsupportedFetchModeException(\PDO::FETCH_CLASS);
     }
 
@@ -75,7 +79,8 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function methodNotImplementedExceptionTest() {
+    public function methodNotImplementedExceptionTest() 
+    {
         Exceptions::methodNotImplementedException('class', 'method');
     }
 
@@ -88,7 +93,8 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function requestFailedExceptionTest() {
+    public function requestFailedExceptionTest() 
+    {
         Exceptions::requestFailedException(new Request(['method' => 'get', 'url' => 'url']), 1, 'errorMessage');
     }
 
@@ -101,7 +107,8 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function invalidAuthStrategyExceptionTest() {
+    public function invalidAuthStrategyExceptionTest() 
+    {
         Exceptions::invalidAuthStrategyException('class');
     }
 
@@ -114,7 +121,8 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function invalidSqlOperationExceptionTest() {
+    public function invalidSqlOperationExceptionTest() 
+    {
         Exceptions::invalidSqlOperationException('operation');
     }
 
@@ -127,7 +135,8 @@ class ExceptionsTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function invalidFormatExceptionTest() {
+    public function invalidFormatExceptionTest() 
+    {
         Exceptions::invalidFormatException('class');
     }
 }

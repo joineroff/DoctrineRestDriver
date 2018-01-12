@@ -38,7 +38,8 @@ use PHPSQLParser\PHPSQLParser;
  *
  * @SuppressWarnings("PHPMD.TooManyPublicMethods")
  */
-class TableTest extends \PHPUnit_Framework_TestCase {
+class TableTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -47,7 +48,8 @@ class TableTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createSelect() {
+    public function createSelect() 
+    {
         $parser = new PHPSQLParser();
         $tokens = $parser->parse('SELECT name FROM products p0');
 
@@ -61,7 +63,8 @@ class TableTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function aliasSelect() {
+    public function aliasSelect() 
+    {
         $parser = new PHPSQLParser();
         $tokens = $parser->parse('SELECT name FROM products p0');
 
@@ -75,7 +78,8 @@ class TableTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createSelectWithUrl() {
+    public function createSelectWithUrl() 
+    {
         $parser = new PHPSQLParser();
         $tokens = $parser->parse('SELECT name FROM "http://www.circle.ai/api" p0');
 
@@ -89,7 +93,8 @@ class TableTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function aliasSelectWithUrl() {
+    public function aliasSelectWithUrl() 
+    {
         $parser = new PHPSQLParser();
         $tokens = $parser->parse('SELECT name FROM "http://www.circle.ai/api" p0');
 
@@ -103,7 +108,8 @@ class TableTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createInsert() {
+    public function createInsert() 
+    {
         $parser = new PHPSQLParser();
         $tokens = $parser->parse('INSERT INTO products (name) VALUES (name)');
 
@@ -117,7 +123,8 @@ class TableTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function aliasInsert() {
+    public function aliasInsert() 
+    {
         $parser = new PHPSQLParser();
         $tokens = $parser->parse('INSERT INTO products (name) VALUES (name)');
 
@@ -131,7 +138,8 @@ class TableTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createInsertWithUrl() {
+    public function createInsertWithUrl() 
+    {
         $parser = new PHPSQLParser();
         $tokens = $parser->parse('INSERT INTO "http://www.circle.ai/api" (name) VALUES (name)');
 
@@ -145,7 +153,8 @@ class TableTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function aliasInsertWithUrl() {
+    public function aliasInsertWithUrl() 
+    {
         $parser = new PHPSQLParser();
         $tokens = $parser->parse('INSERT INTO "http://www.circle.ai/api" (name) VALUES (name)');
 
@@ -159,7 +168,8 @@ class TableTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createUpdate() {
+    public function createUpdate() 
+    {
         $parser = new PHPSQLParser();
         $tokens = $parser->parse('UPDATE products p0 set name="name"');
 
@@ -173,7 +183,8 @@ class TableTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function aliasUpdate() {
+    public function aliasUpdate() 
+    {
         $parser = new PHPSQLParser();
         $tokens = $parser->parse('UPDATE products p0 set name="name"');
 
@@ -187,7 +198,8 @@ class TableTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createUpdateWithUrl() {
+    public function createUpdateWithUrl() 
+    {
         $parser = new PHPSQLParser();
         $tokens = $parser->parse('UPDATE "http://www.circle.ai/api" p0 set name="name"');
 
@@ -201,7 +213,8 @@ class TableTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function aliasUpdateWithUrl() {
+    public function aliasUpdateWithUrl() 
+    {
         $parser = new PHPSQLParser();
         $tokens = $parser->parse('UPDATE "http://www.circle.ai/api" p0 set name="name"');
 
@@ -215,7 +228,8 @@ class TableTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function replace() {
+    public function replace() 
+    {
         $parser = new PHPSQLParser();
 
         $tokens = $parser->parse('UPDATE products p0 set name="name"');

@@ -24,17 +24,19 @@ namespace Circle\DoctrineRestDriver\Types;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class SqlOperation {
+class SqlOperation
+{
 
     /**
      * Returns the sql operation (SELECT, UPDATE, DELETE, INSERT)
      *
-     * @param  array  $tokens
+     * @param  array $tokens
      * @return string
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $tokens) {
+    public static function create(array $tokens) 
+    {
         HashMap::assert($tokens, 'tokens');
 
         return strtolower(array_keys($tokens)[0]);

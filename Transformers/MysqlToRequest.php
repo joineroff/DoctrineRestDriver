@@ -37,7 +37,8 @@ use PHPSQLParser\PHPSQLParser;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class MysqlToRequest {
+class MysqlToRequest
+{
 
     /**
      * @var PHPSQLParser
@@ -65,7 +66,8 @@ class MysqlToRequest {
      * @param array        $options
      * @param RoutingTable $routings
      */
-    public function __construct(array $options, RoutingTable $routings) {
+    public function __construct(array $options, RoutingTable $routings) 
+    {
         $this->options        = $options;
         $this->parser         = new PHPSQLParser();
         $this->requestFactory = new RequestFactory();
@@ -80,7 +82,8 @@ class MysqlToRequest {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function transform($query) {
+    public function transform($query) 
+    {
         $usePatch = isset($this->options['driverOptions']['use_patch']) ? $this->options['driverOptions']['use_patch'] : false;
         
         $tokens     = $this->parser->parse($query);

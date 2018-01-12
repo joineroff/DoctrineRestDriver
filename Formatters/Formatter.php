@@ -24,7 +24,8 @@ namespace Circle\DoctrineRestDriver\Formatters;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-interface Formatter {
+interface Formatter
+{
 
     /**
      * encodes the given values into json

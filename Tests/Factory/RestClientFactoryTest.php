@@ -28,14 +28,16 @@ use Circle\DoctrineRestDriver\Factory\RestClientFactory;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Factory\RestClientFactory
  */
-class RestClientFactoryTest extends \PHPUnit_Framework_TestCase {
+class RestClientFactoryTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
      * @group  unit
      * @covers ::createOne
      */
-    public function createOne() {
+    public function createOne() 
+    {
         $factory = new RestClientFactory();
         $this->assertInstanceOf('Circle\RestClientBundle\Services\RestClient', $factory->createOne([]));
     }

@@ -28,7 +28,8 @@ use Circle\DoctrineRestDriver\Formatters\Json;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Formatters\Json
  */
-class JsonTest extends \PHPUnit_Framework_TestCase {
+class JsonTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -37,7 +38,8 @@ class JsonTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function encode() {
+    public function encode() 
+    {
         $json = new Json();
         $this->assertSame('{"test":"test"}', $json->encode(['test' => 'test']));
     }
@@ -49,7 +51,8 @@ class JsonTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function decode() {
+    public function decode() 
+    {
         $json = new Json();
         $this->assertEquals(['test' => 'test'], $json->decode('{"test": "test"}'));
     }

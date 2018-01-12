@@ -28,7 +28,8 @@ use Circle\DoctrineRestDriver\Types\Value;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\Value
  */
-class ValueTest extends \PHPUnit_Framework_TestCase {
+class ValueTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -37,7 +38,8 @@ class ValueTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function create() {
+    public function create() 
+    {
         $this->assertSame(1, Value::create('1'));
         $this->assertSame(1.01, Value::create('1.01'));
         $this->assertSame('hello', Value::create('hello'));

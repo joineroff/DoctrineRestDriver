@@ -28,7 +28,8 @@ use Circle\DoctrineRestDriver\Types\NotNil;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\NotNil
  */
-class NotNilTest extends \PHPUnit_Framework_TestCase {
+class NotNilTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -37,7 +38,8 @@ class NotNilTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function assert() {
+    public function assert() 
+    {
         $this->assertSame('test', NotNil::assert('test', 'test'));
     }
 }

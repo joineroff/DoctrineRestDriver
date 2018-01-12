@@ -30,14 +30,16 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Annotations\Reader
  */
-class ReaderTest extends \PHPUnit_Framework_TestCase {
+class ReaderTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * {@inheritdoc}
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function setUp() {
+    public function setUp() 
+    {
         AnnotationRegistry::registerFile(__DIR__ . '/../../vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/Entity.php');
         AnnotationRegistry::registerFile(__DIR__ . '/../../vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/Table.php');
         AnnotationRegistry::registerFile(__DIR__ . '/../../vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/Column.php');
@@ -58,12 +60,15 @@ class ReaderTest extends \PHPUnit_Framework_TestCase {
      * @covers ::__construct
      * @covers ::read
      */
-    public function getRoute() {
+    public function getRoute() 
+    {
         $reader   = new Reader();
         $class    = new \ReflectionClass('Circle\DoctrineRestDriver\Tests\Entity\TestEntity');
-        $expected = new Select([
+        $expected = new Select(
+            [
             'value' => 'http://127.0.0.1:3000/app_dev.php/mockapi/products'
-        ]);
+            ]
+        );
 
         $this->assertEquals($expected, $reader->read($class, 'Circle\DoctrineRestDriver\Annotations\Select'));
     }

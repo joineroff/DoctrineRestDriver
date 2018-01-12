@@ -29,17 +29,19 @@ use Circle\DoctrineRestDriver\Validation\Assertions;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class Format {
+class Format
+{
 
     /**
      * Returns the right format
      *
-     * @param  array  $options
+     * @param  array $options
      * @return Formatter
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $options) {
+    public static function create(array $options) 
+    {
         $formatterClass = ucfirst(!empty($options['driverOptions']['format']) ? $options['driverOptions']['format'] : 'json');
         $className      = preg_match('/\\\\/', $formatterClass) ? $formatterClass : 'Circle\DoctrineRestDriver\Formatters\\' . $formatterClass;
         Assertions::assertClassExists($className);
@@ -56,7 +58,8 @@ class Format {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function assert($instance) {
+    public static function assert($instance) 
+    {
         return !$instance instanceof Formatter ? Exceptions::invalidFormatException(get_class($instance)) : $instance;
     }
 }

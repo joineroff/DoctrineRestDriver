@@ -26,7 +26,8 @@ use Doctrine\Common\Persistence\ObjectManager;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class MetaData {
+class MetaData
+{
 
     /**
      * @var ObjectManager
@@ -36,10 +37,13 @@ class MetaData {
     /**
      * MetaData constructor
      */
-    public function __construct() {
-        $this->em = array_filter(debug_backtrace(), function($trace) {
-            return isset($trace['object']) && $trace['object'] instanceof ObjectManager;
-        });
+    public function __construct() 
+    {
+        $this->em = array_filter(
+            debug_backtrace(), function ($trace) {
+                return isset($trace['object']) && $trace['object'] instanceof ObjectManager;
+            }
+        );
     }
 
     /**
@@ -47,11 +51,14 @@ class MetaData {
      *
      * @return array
      */
-    public function getEntityNamespaces() {
-        return array_reduce($this->get(), function($carry, $item) {
-            $carry[$item->table['name']] = $item->getName();
-            return $carry;
-        }, []);
+    public function getEntityNamespaces() 
+    {
+        return array_reduce(
+            $this->get(), function ($carry, $item) {
+                $carry[$item->table['name']] = $item->getName();
+                return $carry;
+            }, []
+        );
     }
 
     /**
@@ -59,7 +66,8 @@ class MetaData {
      *
      * @return array
      */
-    public function get() {
+    public function get() 
+    {
         return empty($this->em) ? [] : array_pop($this->em)['object']->getMetaDataFactory()->getAllMetaData();
     }
 }

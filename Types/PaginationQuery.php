@@ -21,10 +21,11 @@ namespace Circle\DoctrineRestDriver\Types;
 /**
  * Handles creation of pagination related http headers
  *
- * @author Rob Treacy <robert.treacy@thesalegroup.co.uk>
+ * @author    Rob Treacy <robert.treacy@thesalegroup.co.uk>
  * @copyright 2016
  */
-class PaginationQuery {
+class PaginationQuery
+{
 
     const DEFAULT_PER_PAGE_PARAM = 'per_page';
     const DEFAULT_PAGE_PARAM     = 'page';
@@ -36,10 +37,12 @@ class PaginationQuery {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $tokens, $perPageParam = self::DEFAULT_PER_PAGE_PARAM, $pageParam = self::DEFAULT_PAGE_PARAM) {
+    public static function create(array $tokens, $perPageParam = self::DEFAULT_PER_PAGE_PARAM, $pageParam = self::DEFAULT_PAGE_PARAM) 
+    {
         HashMap::assert($tokens, 'tokens');
 
-        if (empty($tokens['LIMIT'])) return [];
+        if (empty($tokens['LIMIT'])) { return [];
+        }
         
         $perPage = $tokens['LIMIT']['rowcount'];
         $offset  = isset($tokens['LIMIT']['offset']) ? (int) $tokens['LIMIT']['offset'] : 0;

@@ -28,7 +28,8 @@ use Circle\DoctrineRestDriver\Statement;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Statement
  */
-class StatementTest extends \PHPUnit_Framework_TestCase {
+class StatementTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @var Statement
@@ -38,7 +39,8 @@ class StatementTest extends \PHPUnit_Framework_TestCase {
     /**
      * {@inheritdoc}
      */
-    public function setUp() {
+    public function setUp() 
+    {
         $routings = $this->getMockBuilder('Circle\DoctrineRestDriver\Annotations\RoutingTable')->disableOriginalConstructor()->getMock();
         $routings
             ->expects($this->any())
@@ -62,7 +64,8 @@ class StatementTest extends \PHPUnit_Framework_TestCase {
      * @expectedException \Exception
      * @covers ::bindParam
      */
-    public function bindParam() {
+    public function bindParam() 
+    {
         $test = 'test';
         $this->statement->bindParam('test', $test);
     }
@@ -72,7 +75,8 @@ class StatementTest extends \PHPUnit_Framework_TestCase {
      * @group unit
      * @covers ::errorInfo
      */
-    public function errorInfo() {
+    public function errorInfo() 
+    {
         $this->assertSame(null, $this->statement->errorInfo());
     }
 
@@ -81,7 +85,8 @@ class StatementTest extends \PHPUnit_Framework_TestCase {
      * @group unit
      * @covers ::errorCode
      */
-    public function errorCode() {
+    public function errorCode() 
+    {
         $this->assertSame(null, $this->statement->errorCode());
     }
 
@@ -90,7 +95,8 @@ class StatementTest extends \PHPUnit_Framework_TestCase {
      * @group unit
      * @covers ::columnCount
      */
-    public function columnCount() {
+    public function columnCount() 
+    {
         $this->assertSame(0, $this->statement->columnCount());
     }
 
@@ -100,7 +106,8 @@ class StatementTest extends \PHPUnit_Framework_TestCase {
      * @expectedException \Exception
      * @covers ::fetchColumn
      */
-    public function fetchColumn() {
+    public function fetchColumn() 
+    {
         $this->statement->fetchColumn(1);
     }
 
@@ -109,7 +116,8 @@ class StatementTest extends \PHPUnit_Framework_TestCase {
      * @group unit
      * @covers ::getIterator
      */
-    public function getIterator() {
+    public function getIterator() 
+    {
         $this->assertSame('SELECT name FROM product WHERE id=1', $this->statement->getIterator());
     }
 
@@ -119,7 +127,8 @@ class StatementTest extends \PHPUnit_Framework_TestCase {
      * @expectedException \Exception
      * @covers ::fetchAll
      */
-    public function fetchAllFalseMode() {
+    public function fetchAllFalseMode() 
+    {
         $this->statement->fetchAll(\PDO::FETCH_CLASS);
     }
 
@@ -128,7 +137,8 @@ class StatementTest extends \PHPUnit_Framework_TestCase {
      * @group unit
      * @covers ::fetchAll
      */
-    public function fetchAll() {
+    public function fetchAll() 
+    {
         $this->assertEquals([], $this->statement->fetchAll(\PDO::FETCH_ASSOC));
     }
 }

@@ -28,7 +28,8 @@ use Circle\DoctrineRestDriver\Annotations\Insert;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Annotations\Insert
  */
-class InsertTest extends \PHPUnit_Framework_TestCase {
+class InsertTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -36,10 +37,13 @@ class InsertTest extends \PHPUnit_Framework_TestCase {
      * @covers ::__construct
      * @covers ::getRoute
      */
-    public function getRoute() {
-        $post = new Insert([
+    public function getRoute() 
+    {
+        $post = new Insert(
+            [
             'value' => 'http://www.mySite.com/post'
-        ]);
+            ]
+        );
 
         $this->assertSame('http://www.mySite.com/post', $post->getRoute());
     }

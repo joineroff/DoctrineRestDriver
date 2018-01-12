@@ -28,7 +28,8 @@ use Circle\DoctrineRestDriver\Validation\Assertions;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class HttpMethod {
+class HttpMethod
+{
 
     /**
      * Returns the right HTTP method
@@ -39,7 +40,8 @@ class HttpMethod {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create($method, DataSource $annotation = null) {
+    public static function create($method, DataSource $annotation = null) 
+    {
         Str::assert($method, 'method');
         return empty($annotation) || $annotation->getMethod() === null ? $method : $annotation->getMethod();
     }

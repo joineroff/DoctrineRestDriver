@@ -27,7 +27,8 @@ use Circle\DoctrineRestDriver\Validation\Exceptions\InvalidTypeException;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class HashMapEntry {
+class HashMapEntry
+{
 
     /**
      * Asserts if the given value is a hash map entry
@@ -39,9 +40,12 @@ class HashMapEntry {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function assert($value, $varName) {
-        if(!is_array($value)) return Exceptions::InvalidTypeException('HashMapEntry', $varName, $value);
-        if(count($value) > 1) return Exceptions::InvalidTypeException('HashMapEntry', $varName, $value);
+    public static function assert($value, $varName) 
+    {
+        if(!is_array($value)) { return Exceptions::InvalidTypeException('HashMapEntry', $varName, $value);
+        }
+        if(count($value) > 1) { return Exceptions::InvalidTypeException('HashMapEntry', $varName, $value);
+        }
 
         $keys = array_keys($value);
         $key  = end($keys);
@@ -62,7 +66,8 @@ class HashMapEntry {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function assertExists($hashMap, $entryName, $varName) {
+    public static function assertExists($hashMap, $entryName, $varName) 
+    {
         HashMap::assert($hashMap, $varName);
         return array_key_exists($entryName, $hashMap) ? $hashMap : Exceptions::InvalidTypeException('HashMapEntry', $varName . '[\'' . $entryName . '\']', 'undefined');
     }

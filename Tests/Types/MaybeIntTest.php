@@ -28,7 +28,8 @@ use Circle\DoctrineRestDriver\Types\MaybeInt;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\MaybeInt
  */
-class MaybeIntTest extends \PHPUnit_Framework_TestCase {
+class MaybeIntTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -37,7 +38,8 @@ class MaybeIntTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function assert() {
+    public function assert() 
+    {
         $this->assertSame(1, MaybeInt::assert(1, 'test'));
         $this->assertSame(null, MaybeInt::assert(null, 'test'));
     }
@@ -50,7 +52,8 @@ class MaybeIntTest extends \PHPUnit_Framework_TestCase {
      * @SuppressWarnings("PHPMD.StaticAccess")
      * @expectedException \Circle\DoctrineRestDriver\Validation\Exceptions\InvalidTypeException
      */
-    public function assertOnException() {
+    public function assertOnException() 
+    {
         MaybeInt::assert([], 'array');
     }
 }

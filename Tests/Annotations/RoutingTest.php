@@ -33,12 +33,14 @@ use Circle\DoctrineRestDriver\Annotations\Routing;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Annotations\Routing
  */
-class RoutingTest extends \PHPUnit_Framework_TestCase {
+class RoutingTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * {@inheritdoc}
      */
-    public function setUp() {
+    public function setUp() 
+    {
         $this->routing = new Routing('Circle\DoctrineRestDriver\Tests\Entity\AssociatedEntity');
     }
 
@@ -48,7 +50,8 @@ class RoutingTest extends \PHPUnit_Framework_TestCase {
      * @covers ::__construct
      * @covers ::post
      */
-    public function post() {
+    public function post() 
+    {
         $this->assertSame(null, $this->routing->post());
     }
 
@@ -58,7 +61,8 @@ class RoutingTest extends \PHPUnit_Framework_TestCase {
      * @covers ::__construct
      * @covers ::put
      */
-    public function put() {
+    public function put() 
+    {
         $this->assertSame(null, $this->routing->put());
     }
 
@@ -68,7 +72,8 @@ class RoutingTest extends \PHPUnit_Framework_TestCase {
      * @covers ::__construct
      * @covers ::patch
      */
-    public function patch() {
+    public function patch() 
+    {
         $this->assertSame(null, $this->routing->patch());
     }
 
@@ -78,7 +83,8 @@ class RoutingTest extends \PHPUnit_Framework_TestCase {
      * @covers ::__construct
      * @covers ::get
      */
-    public function get() {
+    public function get() 
+    {
         $this->assertSame(null, $this->routing->get());
     }
 
@@ -88,7 +94,8 @@ class RoutingTest extends \PHPUnit_Framework_TestCase {
      * @covers ::__construct
      * @covers ::delete
      */
-    public function delete() {
+    public function delete() 
+    {
         $this->assertSame(null, $this->routing->delete());
     }
 
@@ -98,7 +105,8 @@ class RoutingTest extends \PHPUnit_Framework_TestCase {
      * @covers ::__construct
      * @covers ::getAll
      */
-    public function getAll() {
+    public function getAll() 
+    {
         $this->assertSame(null, $this->routing->getAll());
     }
 }

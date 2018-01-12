@@ -29,7 +29,8 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\Result
  */
-class ResultTest extends \PHPUnit_Framework_TestCase {
+class ResultTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -40,10 +41,15 @@ class ResultTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function getWithSelect() {
-        $response = new Response(json_encode([
-            'name' => 'testname'
-        ]));
+    public function getWithSelect() 
+    {
+        $response = new Response(
+            json_encode(
+                [
+                'name' => 'testname'
+                ]
+            )
+        );
 
         $expected = [
             [
@@ -63,10 +69,15 @@ class ResultTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function getWithDelete() {
-        $response = new Response(json_encode([
-            'name' => 'testname'
-        ]));
+    public function getWithDelete() 
+    {
+        $response = new Response(
+            json_encode(
+                [
+                'name' => 'testname'
+                ]
+            )
+        );
 
         $expected = [];
 
@@ -82,10 +93,15 @@ class ResultTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function getWithInsert() {
-        $response = new Response(json_encode([
-            'name' => 'testname'
-        ]));
+    public function getWithInsert() 
+    {
+        $response = new Response(
+            json_encode(
+                [
+                'name' => 'testname'
+                ]
+            )
+        );
 
         $expected = [
             'name' => 'testname'
@@ -103,10 +119,15 @@ class ResultTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function getWithUpdate() {
-        $response = new Response(json_encode([
-            'name' => 'testname'
-        ]));
+    public function getWithUpdate() 
+    {
+        $response = new Response(
+            json_encode(
+                [
+                'name' => 'testname'
+                ]
+            )
+        );
 
         $expected = [
             'name' => 'testname'
@@ -124,11 +145,16 @@ class ResultTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function id() {
-        $response = new Response(json_encode([
-            'name' => 'testname',
-            'id'   => 1
-        ]));
+    public function id() 
+    {
+        $response = new Response(
+            json_encode(
+                [
+                'name' => 'testname',
+                'id'   => 1
+                ]
+            )
+        );
 
         $expected = 1;
 

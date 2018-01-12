@@ -28,7 +28,8 @@ use PHPSQLParser\PHPSQLParser;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\HttpHeader
  */
-class HttpHeaderTest extends \PHPUnit_Framework_TestCase {
+class HttpHeaderTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @var array
@@ -38,7 +39,8 @@ class HttpHeaderTest extends \PHPUnit_Framework_TestCase {
     /**
      * {@inheritdoc}
      */
-    public function setUp() {
+    public function setUp() 
+    {
         $this->options = [
             'security_strategy'  => 'none',
             'CURLOPT_MAXREDIRS'  => 22,
@@ -53,7 +55,8 @@ class HttpHeaderTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function create() {
+    public function create() 
+    {
         $query  = 'SELECT name FROM products WHERE id=1';
         $parser = new PHPSQLParser();
         $token  = $parser->parse($query);
@@ -72,7 +75,8 @@ class HttpHeaderTest extends \PHPUnit_Framework_TestCase {
      * 
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createWithPaginationIsDefault() {
+    public function createWithPaginationIsDefault() 
+    {
         $query  = 'SELECT name FROM products LIMIT 5 OFFSET 2';
         $parser = new PHPSQLParser();
         $token  = $parser->parse($query);
@@ -95,7 +99,8 @@ class HttpHeaderTest extends \PHPUnit_Framework_TestCase {
      * 
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createWithoutPagination() {
+    public function createWithoutPagination() 
+    {
         $query  = 'SELECT name FROM products LIMIT 5 OFFSET 2';
         $parser = new PHPSQLParser();
         $token  = $parser->parse($query);

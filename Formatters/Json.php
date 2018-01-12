@@ -24,7 +24,8 @@ namespace Circle\DoctrineRestDriver\Formatters;
  * @author    Tobias Hauck <tobias@circle.ai>
  * @copyright 2015 TeeAge-Beatz UG
  */
-class Json implements Formatter {
+class Json implements Formatter
+{
 
     /**
      * encodes the given values into json
@@ -32,7 +33,8 @@ class Json implements Formatter {
      * @param  array $values
      * @return string
      */
-    public function encode(array $values) {
+    public function encode(array $values) 
+    {
         return json_encode($values);
     }
 
@@ -42,7 +44,8 @@ class Json implements Formatter {
      * @param  string $json
      * @return array
      */
-    public function decode($json) {
+    public function decode($json) 
+    {
         return json_decode($json, true);
     }
 }

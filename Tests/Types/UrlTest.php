@@ -29,7 +29,8 @@ use PHPSQLParser\PHPSQLParser;
  *
  * @coversDefaultClass Circle\DoctrineRestDriver\Types\Url
  */
-class UrlTest extends \PHPUnit_Framework_TestCase {
+class UrlTest extends \PHPUnit_Framework_TestCase
+{
 
     /**
      * @test
@@ -38,7 +39,8 @@ class UrlTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function create() {
+    public function create() 
+    {
         $this->assertSame('http://circle.ai/products/1', Url::create('products', 'http://circle.ai', '1'));
     }
 
@@ -49,7 +51,8 @@ class UrlTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createWithUrl() {
+    public function createWithUrl() 
+    {
         $this->assertSame('http://www.circle.ai/products/1', Url::create('http://www.circle.ai/products/{id}', 'http://circle.ai', '1'));
     }
 
@@ -60,7 +63,8 @@ class UrlTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createWithUrlWithoutSetId() {
+    public function createWithUrlWithoutSetId() 
+    {
         $this->assertSame('http://www.circle.ai/products', Url::create('http://www.circle.ai/products/{id}', 'http://circle.ai'));
     }
 
@@ -71,7 +75,8 @@ class UrlTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createWithoutAnyId() {
+    public function createWithoutAnyId() 
+    {
         $this->assertSame('http://www.circle.ai/products/1', Url::create('http://www.circle.ai/products', 'http://circle.ai', '1'));
     }
 
@@ -82,7 +87,8 @@ class UrlTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createFromTokens() {
+    public function createFromTokens() 
+    {
         $tokens     = (new PHPSQLParser())->parse('SELECT name FROM products WHERE id=1');
         $annotation = $this->getMockBuilder('Circle\DoctrineRestDriver\Annotations\DataSource')->getMock();
         $annotation
@@ -100,7 +106,8 @@ class UrlTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function isTest() {
+    public function isTest() 
+    {
         $this->assertTrue(Url::is('http://www.circle.ai'));
     }
 
@@ -111,7 +118,8 @@ class UrlTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function isUrlLocalhostTest() {
+    public function isUrlLocalhostTest() 
+    {
         $this->assertTrue(Url::is('http://localhost:3000'));
         $this->assertTrue(Url::is('http://localhost:3000/api?filter=true'));
     }
@@ -123,7 +131,8 @@ class UrlTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function isNoUrlTest() {
+    public function isNoUrlTest() 
+    {
         $this->assertFalse(Url::is('http:/localhost:3000'));
         $this->assertFalse(Url::is('localhost:3000'));
         $this->assertFalse(Url::is('www.circle.ai'));
@@ -138,7 +147,8 @@ class UrlTest extends \PHPUnit_Framework_TestCase {
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function assert() {
+    public function assert() 
+    {
         $this->assertSame('http://www.test.com', Url::assert('http://www.test.com', 'Url'));
         $this->assertSame('http://www.test.com?filter=1', Url::assert('http://www.test.com?filter=1', 'Url'));
         $this->assertSame('http://circle.ai', Url::assert('http://circle.ai', 'Url'));
@@ -153,7 +163,8 @@ class UrlTest extends \PHPUnit_Framework_TestCase {
      * @SuppressWarnings("PHPMD.StaticAccess")
      * @expectedException \Circle\DoctrineRestDriver\Validation\Exceptions\InvalidTypeException
      */
-    public function assertUrlOnException() {
+    public function assertUrlOnException() 
+    {
         Url::assert('localhost:3000', 'Url');
     }
 }
