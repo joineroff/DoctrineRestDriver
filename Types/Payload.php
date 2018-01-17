@@ -39,16 +39,18 @@ class Payload
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $tokens, array $options) 
+    public static function create(array $tokens, array $options)
     {
         HashMap::assert($tokens, 'tokens');
 
         $format    = Format::create($options);
         $operation = SqlOperation::create($tokens);
 
-        if ($operation === SqlOperations::INSERT) { return $format->encode(InsertChangeSet::create($tokens));
+        if ($operation === SqlOperations::INSERT) {
+            return $format->encode(InsertChangeSet::create($tokens));
         }
-        if ($operation === SqlOperations::UPDATE) { return $format->encode(UpdateChangeSet::create($tokens));
+        if ($operation === SqlOperations::UPDATE) {
+            return $format->encode(UpdateChangeSet::create($tokens));
         }
 
         return null;

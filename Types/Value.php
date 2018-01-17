@@ -39,16 +39,19 @@ class Value
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create($value) 
+    public static function create($value)
     {
         Str::assert($value, 'value');
-        if (empty($value)) { return null;
+        if (empty($value)) {
+            return null;
         }
 
         $unquoted = preg_replace('/\"|\\\'|\`$/', '', preg_replace('/^\"|\\\'|\`/', '', $value));
-        if (!is_numeric($unquoted)) {                   return $unquoted;
+        if (!is_numeric($unquoted)) {
+            return $unquoted;
         }
-        if ((string) intval($unquoted) === $unquoted) { return intval($unquoted);
+        if ((string) intval($unquoted) === $unquoted) {
+            return intval($unquoted);
         }
 
         return floatval($unquoted);

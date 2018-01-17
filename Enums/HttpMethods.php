@@ -17,6 +17,7 @@
  */
 
 namespace Circle\DoctrineRestDriver\Enums;
+
 use Circle\DoctrineRestDriver\Exceptions\Exceptions;
 use Circle\DoctrineRestDriver\Exceptions\InvalidSqlOperationException;
 
@@ -44,15 +45,19 @@ class HttpMethods
      * @SuppressWarnings("PHPMD.StaticAccess")
      * @SuppressWarnings("PHPMD.BooleanArgumentFlag")
      */
-    public static function ofSqlOperation($operation, $patchInsert = false) 
+    public static function ofSqlOperation($operation, $patchInsert = false)
     {
-        if ($operation === SqlOperations::INSERT) { return HttpMethods::POST;
+        if ($operation === SqlOperations::INSERT) {
+            return HttpMethods::POST;
         }
-        if ($operation === SqlOperations::SELECT) { return HttpMethods::GET;
+        if ($operation === SqlOperations::SELECT) {
+            return HttpMethods::GET;
         }
-        if ($operation === SqlOperations::UPDATE) { return $patchInsert ? HttpMethods::PATCH : HttpMethods::PUT;
+        if ($operation === SqlOperations::UPDATE) {
+            return $patchInsert ? HttpMethods::PATCH : HttpMethods::PUT;
         }
-        if ($operation === SqlOperations::DELETE) { return HttpMethods::DELETE;
+        if ($operation === SqlOperations::DELETE) {
+            return HttpMethods::DELETE;
         }
 
         return Exceptions::InvalidSqlOperationException($operation);

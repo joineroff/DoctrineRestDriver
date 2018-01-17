@@ -40,7 +40,7 @@ class NotNil
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function assert($value, $varName) 
+    public static function assert($value, $varName)
     {
         return $value === null ? Exceptions::NotNilException($varName) : $value;
     }

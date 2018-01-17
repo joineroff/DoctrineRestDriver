@@ -43,23 +43,27 @@ class Url
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create($route, $apiUrl, $id = null) 
+    public static function create($route, $apiUrl, $id = null)
     {
         Str::assert($route, 'route');
         Str::assert($apiUrl, 'apiUrl');
         MaybeString::assert($id, 'id');
 
+        $idPath = '';
         if (!preg_match('/\(.*\)/', $id)) {
             $idPath = empty($id) ? '' : '/' . $id;
-        } else {
-            $idPath = '';
         }
 
-        if (!self::is($route)) {               return $apiUrl . '/' . $route . $idPath;
+        if (!self::is($route)) {
+            return $apiUrl . '/' . $route . $idPath;
         }
-        if (!preg_match('/\{id\}/', $route)) { return $route . $idPath;
+
+        if (!preg_match('/\{id\}/', $route)) {
+            return $route . $idPath;
         }
-        if (!empty($id)) {                     return str_replace('{id}', $id, $route);
+
+        if (!empty($id)) {
+            return str_replace('{id}', $id, $route);
         }
 
         return str_replace('/{id}', '', $route);
@@ -75,7 +79,7 @@ class Url
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function createFromTokens(array $tokens, $apiUrl, DataSource $annotation = null) 
+    public static function createFromTokens(array $tokens, $apiUrl, DataSource $annotation = null)
     {
         $id    = Identifier::create($tokens);
         $route = empty($annotation) || $annotation->getRoute() === null ? Table::create($tokens) : $annotation->getRoute();
@@ -91,7 +95,7 @@ class Url
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function is($value) 
+    public static function is($value)
     {
         return (bool) (preg_match('/^(http|ftp|https):\/\/([0-9a-zA-Z_-]+(\.[0-9a-zA-Z_-]+)+|localhost)([0-9a-zA-Z_\-.,@?^=%&amp;:\/~+#-]*[0-9a-zA-Z_\-@?^=%&amp;\/~+#-])?/', $value));
     }
@@ -106,7 +110,7 @@ class Url
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function assert($value, $varName) 
+    public static function assert($value, $varName)
     {
         return !self::is($value) ? Exceptions::InvalidTypeException('Url', $varName, $value) : $value;
     }

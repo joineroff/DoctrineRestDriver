@@ -34,7 +34,7 @@ class InvalidSqlOperationException extends DoctrineRestDriverException
      *
      * @param string $operation
      */
-    public function __construct($operation) 
+    public function __construct($operation)
     {
         parent::__construct('Invalid sql operation ' . $operation);
     }

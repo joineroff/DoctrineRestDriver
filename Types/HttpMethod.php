@@ -40,7 +40,7 @@ class HttpMethod
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create($method, DataSource $annotation = null) 
+    public static function create($method, DataSource $annotation = null)
     {
         Str::assert($method, 'method');
         return empty($annotation) || $annotation->getMethod() === null ? $method : $annotation->getMethod();

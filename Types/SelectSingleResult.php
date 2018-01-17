@@ -51,7 +51,8 @@ class SelectSingleResult
                     $value = $content;
                 }
                 return [$key => $value];
-            }, $tokens['SELECT']
+            },
+            $tokens['SELECT']
         );
 
         return [ array_reduce($attributeValueMap, 'array_merge', []) ];

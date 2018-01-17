@@ -38,24 +38,30 @@ class Identifier
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $tokens) 
+    public static function create(array $tokens)
     {
         HashMap::assert($tokens, 'tokens');
 
-        if (empty($tokens['WHERE'])) { return '';
+        if (empty($tokens['WHERE'])) {
+            return '';
         }
 
         $idAlias = self::alias($tokens);
 
         return array_reduce(
-            $tokens['WHERE'], function ($carry, $token) use ($tokens, $idAlias) {
-                if (!is_int($carry)) { return $carry;
+            $tokens['WHERE'],
+            function ($carry, $token) use ($tokens, $idAlias) {
+                if (!is_int($carry)) {
+                    return $carry;
                 }
-                if ($token['expr_type'] === 'colref' && $token['base_expr'] === $idAlias) { return $tokens['WHERE'][$carry+2]['base_expr'];
+                if ($token['expr_type'] === 'colref' && $token['base_expr'] === $idAlias) {
+                    return $tokens['WHERE'][$carry+2]['base_expr'];
                 }
-                if (!isset($tokens[$carry+1])) { return '';
+                if (!isset($tokens[$carry+1])) {
+                    return '';
                 }
-            }, 0
+            },
+            0
         );
     }
 
@@ -67,7 +73,7 @@ class Identifier
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function alias(array $tokens) 
+    public static function alias(array $tokens)
     {
         $column     = self::column($tokens, new MetaData());
         $tableAlias = Table::alias($tokens);
@@ -84,11 +90,12 @@ class Identifier
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function column(array $tokens, MetaData $metaData) 
+    public static function column(array $tokens, MetaData $metaData)
     {
         $table = Table::create($tokens);
         $meta  = array_filter(
-            $metaData->get(), function ($meta) use ($table) {
+            $metaData->get(),
+            function ($meta) use ($table) {
                 return $meta->getTableName() === $table;
             }
         );

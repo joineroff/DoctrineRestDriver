@@ -41,14 +41,16 @@ class SqlQuery
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function setParams($query, array $params = []) 
+    public static function setParams($query, array $params = [])
     {
         Str::assert($query, 'query');
 
         return array_reduce(
-            $params, function ($query, $param) {
+            $params,
+            function ($query, $param) {
                 return strpos($query, '?') ? substr_replace($query, $param, strpos($query, '?'), strlen('?')) : $query;
-            }, $query
+            },
+            $query
         );
     }
 
@@ -62,13 +64,14 @@ class SqlQuery
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function quoteUrl($query) 
+    public static function quoteUrl($query)
     {
         $queryParts = explode(' ', Str::assert($query, 'query'));
 
         return trim(
             array_reduce(
-                $queryParts, function ($carry, $part) {
+                $queryParts,
+                function ($carry, $part) {
                     return $carry . (Url::is($part) ? ('"' . $part . '" ') : ($part . ' '));
                 }
             )

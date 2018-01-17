@@ -36,7 +36,7 @@ class InsertChangeSet
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $tokens) 
+    public static function create(array $tokens)
     {
         HashMap::assert($tokens, 'tokens');
 
@@ -49,10 +49,11 @@ class InsertChangeSet
      * @param  array $tokens
      * @return array
      */
-    public static function columns(array $tokens) 
+    public static function columns(array $tokens)
     {
         $columns = array_filter(
-            $tokens['INSERT'], function ($token) {
+            $tokens['INSERT'],
+            function ($token) {
                 return $token['expr_type'] === 'column-list';
             }
         );
@@ -60,7 +61,8 @@ class InsertChangeSet
         return array_map(
             function ($column) {
                 return end($column['no_quotes']['parts']);
-            }, end($columns)['sub_tree']
+            },
+            end($columns)['sub_tree']
         );
     }
 
@@ -72,14 +74,15 @@ class InsertChangeSet
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function values(array $tokens) 
+    public static function values(array $tokens)
     {
         $values = explode(',', self::removeBrackets(self::removeSpacesBetweenComma(end($tokens['VALUES'])['base_expr'])));
 
         return array_map(
             function ($value) {
                 return Value::create($value);
-            }, $values
+            },
+            $values
         );
     }
 
@@ -89,7 +92,7 @@ class InsertChangeSet
      * @param  string $string
      * @return string
      */
-    private static function removeSpacesBetweenComma($string) 
+    private static function removeSpacesBetweenComma($string)
     {
         return str_replace(', ', ',', $string);
     }
@@ -100,7 +103,7 @@ class InsertChangeSet
      * @param  string $string
      * @return string
      */
-    private static function removeBrackets($string) 
+    private static function removeBrackets($string)
     {
         return preg_replace('/\)$/', '', preg_replace('/^\(/', '', $string));
     }

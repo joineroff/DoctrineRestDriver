@@ -37,11 +37,12 @@ class PaginationQuery
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $tokens, $perPageParam = self::DEFAULT_PER_PAGE_PARAM, $pageParam = self::DEFAULT_PAGE_PARAM) 
+    public static function create(array $tokens, $perPageParam = self::DEFAULT_PER_PAGE_PARAM, $pageParam = self::DEFAULT_PAGE_PARAM)
     {
         HashMap::assert($tokens, 'tokens');
 
-        if (empty($tokens['LIMIT'])) { return [];
+        if (empty($tokens['LIMIT'])) {
+            return [];
         }
         
         $perPage = $tokens['LIMIT']['rowcount'];

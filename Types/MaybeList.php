@@ -40,7 +40,7 @@ class MaybeList
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function assert($value, $varName) 
+    public static function assert($value, $varName)
     {
         return !is_array($value) && $value !== null ? Exceptions::InvalidTypeException('MaybeList', $varName, $value) : $value;
     }

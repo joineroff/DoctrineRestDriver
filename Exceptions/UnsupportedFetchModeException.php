@@ -35,7 +35,7 @@ class UnsupportedFetchModeException extends DoctrineRestDriverException
      *
      * @param int $fetchMode
      */
-    public function __construct($fetchMode) 
+    public function __construct($fetchMode)
     {
         parent::__construct('The fetch mode ' . $fetchMode . ' is not supported by this driver');
     }

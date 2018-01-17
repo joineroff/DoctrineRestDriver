@@ -58,7 +58,8 @@ class SelectAllResult
             function ($entry) use ($tokens) {
                 $row = SelectSingleResult::create($tokens, $entry);
                 return array_pop($row);
-            }, $content
+            },
+            $content
         );
 
         return $result;
@@ -83,7 +84,8 @@ class SelectAllResult
                 end($token['no_quotes']['parts']),
                 $token['direction']
                 ];
-            }, $tokens['ORDER']
+            },
+            $tokens['ORDER']
         );
 
         $reducedSortingRules = array_reduce($sortingRules, 'array_merge', []);
@@ -101,7 +103,8 @@ class SelectAllResult
                     array_push($contents, $c[$value]);
                 }
                 return $contents;
-            }, $reducedSortingRules
+            },
+            $reducedSortingRules
         );
 
         $sortArgs[] = &$content;

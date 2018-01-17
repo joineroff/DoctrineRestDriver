@@ -34,7 +34,7 @@ class InvalidFormatException extends DoctrineRestDriverException
      *
      * @param string $class
      */
-    public function __construct($class) 
+    public function __construct($class)
     {
         parent::__construct('Class ' . $class . ' must implement Circle\DoctrineRestDriver\Formatters\Formatter to act as formatter');
     }

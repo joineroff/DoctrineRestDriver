@@ -37,8 +37,8 @@ class StatusCode
         'get'    => 200,
         'put'    => 200,
         'patch'  => 200,
-        'post'   => 201,
-        'delete' => 204
+        'post'   => 200,
+        'delete' => 200
     ];
 
     /**
@@ -50,7 +50,7 @@ class StatusCode
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create($method, DataSource $annotation = null) 
+    public static function create($method, DataSource $annotation = null)
     {
         Str::assert($method, 'method');
 

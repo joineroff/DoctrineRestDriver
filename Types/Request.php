@@ -64,13 +64,14 @@ class Request
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function __construct(array $options) 
+    public function __construct(array $options)
     {
         HashMap::assert($options, 'options');
         HashMapEntry::assertExists($options, 'method', 'options.method');
         HashMapEntry::assertExists($options, 'url', 'options.url');
 
-        foreach($options as $key => $value) { $this->$key = $value;
+        foreach ($options as $key => $value) {
+            $this->$key = $value;
         }
     }
 
@@ -80,7 +81,7 @@ class Request
      * @param  array $options
      * @return Request
      */
-    public function setCurlOptions(array $options) 
+    public function setCurlOptions(array $options)
     {
         return new Request(
             [
@@ -99,7 +100,7 @@ class Request
      *
      * @return string
      */
-    public function getMethod() 
+    public function getMethod()
     {
         return $this->method;
     }
@@ -109,7 +110,7 @@ class Request
      *
      * @return string
      */
-    public function getUrl() 
+    public function getUrl()
     {
         return $this->url;
     }
@@ -119,7 +120,7 @@ class Request
      *
      * @return string
      */
-    public function getPayload() 
+    public function getPayload()
     {
         return $this->payload;
     }
@@ -129,7 +130,7 @@ class Request
      *
      * @return array
      */
-    public function getCurlOptions() 
+    public function getCurlOptions()
     {
         return $this->curlOptions;
     }
@@ -139,7 +140,7 @@ class Request
      *
      * @return string
      */
-    public function getQuery() 
+    public function getQuery()
     {
         return $this->query;
     }
@@ -149,7 +150,7 @@ class Request
      *
      * @return string
      */
-    public function getUrlAndQuery() 
+    public function getUrlAndQuery()
     {
         return $this->url . '?' . $this->query;
     }
@@ -159,7 +160,7 @@ class Request
      *
      * @return int
      */
-    public function getExpectedStatusCode() 
+    public function getExpectedStatusCode()
     {
         return $this->expectedStatusCode;
     }
@@ -167,7 +168,7 @@ class Request
     /**
      * {@inheritdoc}
      */
-    public function __toString() 
+    public function __toString()
     {
         return strtoupper($this->method) . ' ' . $this->getUrlAndQuery() . ' HTTP/1.1' . (!empty($this->payload) ? ' ' . $this->payload : '');
     }

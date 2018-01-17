@@ -37,7 +37,7 @@ class MethodNotImplementedException extends DoctrineRestDriverException
      * @param string $class
      * @param string $method
      */
-    public function __construct($class, $method) 
+    public function __construct($class, $method)
     {
         parent::__construct('The method ' . $method . ' in class ' . $class . ' is not implemented');
     }

@@ -40,7 +40,7 @@ class MaybeInt
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function assert($value, $varName) 
+    public static function assert($value, $varName)
     {
         return !is_int($value) && $value !== null ? Exceptions::InvalidTypeException('MaybeInt', $varName, $value) : $value;
     }

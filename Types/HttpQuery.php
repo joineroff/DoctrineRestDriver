@@ -41,21 +41,22 @@ class HttpQuery
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $tokens, array $options = []) 
+    public static function create(array $tokens, array $options = [])
     {
         HashMap::assert($tokens, 'tokens');
 
         $operation = SqlOperation::create($tokens);
-        if ($operation !== SqlOperations::SELECT) { return null;
+        if ($operation !== SqlOperations::SELECT) {
+            return null;
         }
 
         $query = implode(
-            '&', array_filter(
-                [
+            '&',
+            array_filter([
+                self::createCount($tokens),
                 self::createConditionals($tokens),
                 self::createPagination($tokens, $options),
-                ]
-            )
+            ])
         );
 
         return $query;
@@ -63,15 +64,16 @@ class HttpQuery
 
     /**
      * Create a string of conditional parameters.
-     * 
+     *
      * @param  array $tokens
      * @return string
-     * 
+     *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function createConditionals(array $tokens) 
+    public static function createConditionals(array $tokens)
     {
-        if(!isset($tokens['WHERE'])) { return '';
+        if (!isset($tokens['WHERE'])) {
+            return '';
         }
 
         $tableAlias = Table::alias($tokens);
@@ -79,7 +81,8 @@ class HttpQuery
 
         // Get WHERE conditions as string including table alias and primary key column if present
         $sqlWhereString = array_reduce(
-            $tokens['WHERE'], function ($query, $token) use ($tableAlias) {
+            $tokens['WHERE'],
+            function ($query, $token) use ($tableAlias) {
                 return $query . str_replace('"', '', str_replace('OR', '|', str_replace('AND', '&', $token['base_expr'])));
             }
         );
@@ -90,16 +93,17 @@ class HttpQuery
 
     /**
      * Create a string of pagination parameters
-     * 
+     *
      * @param  array $tokens
      * @param  array $options
      * @return string
-     * 
+     *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function createPagination(array $tokens, array $options) 
+    public static function createPagination(array $tokens, array $options)
     {
-        if(!isset($options['pagination_as_query']) || !$options['pagination_as_query']) { return '';
+        if (!isset($options['pagination_as_query']) || !$options['pagination_as_query']) {
+            return '';
         }
 
         $perPageParam = isset($options['per_page_param']) ? $options['per_page_param'] : PaginationQuery::DEFAULT_PER_PAGE_PARAM;
@@ -108,5 +112,15 @@ class HttpQuery
         $paginationParameters = PaginationQuery::create($tokens, $perPageParam, $pageParam);
 
         return $paginationParameters ? http_build_query($paginationParameters) : '';
+    }
+
+    public static function createCount(array $tokens)
+    {
+        if ((isset($tokens['SELECT']))
+            && (count($tokens['SELECT']) === 1)
+            && ($tokens['SELECT'][0]['base_expr'] === 'count')
+        ) {
+            return 'count';
+        }
     }
 }

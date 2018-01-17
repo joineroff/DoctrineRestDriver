@@ -32,7 +32,7 @@ class NotNilException extends ValidationException
      *
      * @param string $varName
      */
-    public function __construct($varName) 
+    public function __construct($varName)
     {
         parent::__construct($varName . ' must not be null');
     }

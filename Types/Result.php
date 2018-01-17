@@ -52,7 +52,7 @@ class Result
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function __construct($query, Response $response, array $options = []) 
+    public function __construct($query, Response $response, array $options = [])
     {
         $tokens  = (new PHPSQLParser())->parse($query);
         $content = Format::create($options)->decode($response->getContent());
@@ -66,7 +66,7 @@ class Result
      *
      * @return array
      */
-    public function get() 
+    public function get()
     {
         return $this->result;
     }
@@ -74,7 +74,7 @@ class Result
     /**
      * returns the id of the result
      */
-    public function id() 
+    public function id()
     {
         return $this->id;
     }
@@ -87,7 +87,7 @@ class Result
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    private function createId(array $tokens) 
+    private function createId(array $tokens)
     {
         $idColumn = Identifier::column($tokens, new MetaData());
         return empty($this->result[$idColumn]) ? null : $this->result[$idColumn];
@@ -102,11 +102,12 @@ class Result
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    private function createResult(array $tokens, array $content = null) 
+    private function createResult(array $tokens, array $content = null)
     {
         $operator = strtolower(array_keys($tokens)[0]);
 
-        if ($operator === SqlOperations::DELETE) { return [];
+        if ($operator === SqlOperations::DELETE) {
+            return [];
         }
         $result = $operator === SqlOperations::SELECT ? SelectResult::create($tokens, $content) : $content;
         krsort($result);

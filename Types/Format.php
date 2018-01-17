@@ -40,7 +40,7 @@ class Format
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $options) 
+    public static function create(array $options)
     {
         $formatterClass = ucfirst(!empty($options['driverOptions']['format']) ? $options['driverOptions']['format'] : 'json');
         $className      = preg_match('/\\\\/', $formatterClass) ? $formatterClass : 'Circle\DoctrineRestDriver\Formatters\\' . $formatterClass;
@@ -58,7 +58,7 @@ class Format
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function assert($instance) 
+    public static function assert($instance)
     {
         return !$instance instanceof Formatter ? Exceptions::invalidFormatException(get_class($instance)) : $instance;
     }

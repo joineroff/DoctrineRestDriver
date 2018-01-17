@@ -74,12 +74,13 @@ class Routing
      *
      * @param string $namespace
      */
-    public function __construct($namespace) 
+    public function __construct($namespace)
     {
         $reader = new Reader();
         $class  = new \ReflectionClass($namespace);
 
-        foreach (self::$annotations as $alias => $annotation) { $this->$alias = $reader->read($class, $annotation);
+        foreach (self::$annotations as $alias => $annotation) {
+            $this->$alias = $reader->read($class, $annotation);
         }
     }
 
@@ -88,7 +89,7 @@ class Routing
      *
      * @return \Circle\DoctrineRestDriver\Annotations\Insert|null
      */
-    public function post() 
+    public function post()
     {
         return $this->post;
     }
@@ -98,7 +99,7 @@ class Routing
      *
      * @return \Circle\DoctrineRestDriver\Annotations\Select|null
      */
-    public function get() 
+    public function get()
     {
         return $this->get;
     }
@@ -108,7 +109,7 @@ class Routing
      *
      * @return \Circle\DoctrineRestDriver\Annotations\Update|null
      */
-    public function put() 
+    public function put()
     {
         return $this->put;
     }
@@ -118,7 +119,7 @@ class Routing
      *
      * @return \Circle\DoctrineRestDriver\Annotations\Update|null
      */
-    public function patch() 
+    public function patch()
     {
         return $this->patch;
     }
@@ -128,7 +129,7 @@ class Routing
      *
      * @return \Circle\DoctrineRestDriver\Annotations\Delete|null
      */
-    public function delete() 
+    public function delete()
     {
         return $this->delete;
     }
@@ -138,7 +139,7 @@ class Routing
      *
      * @return \Circle\DoctrineRestDriver\Annotations\Fetch|null
      */
-    public function getAll() 
+    public function getAll()
     {
         return $this->getAll;
     }

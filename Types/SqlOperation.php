@@ -35,7 +35,7 @@ class SqlOperation
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $tokens) 
+    public static function create(array $tokens)
     {
         HashMap::assert($tokens, 'tokens');
 

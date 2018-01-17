@@ -41,11 +41,14 @@ class HashMap
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function assert($value, $varName) 
+    public static function assert($value, $varName)
     {
-        if(!is_array($value)) { return Exceptions::InvalidTypeException('HashMap', $varName, $value);
+        if (!is_array($value)) {
+            return Exceptions::InvalidTypeException('HashMap', $varName, $value);
         }
-        foreach($value as $key => $v) { HashMapEntry::assert([$key => $v], $varName);
+
+        foreach ($value as $key => $v) {
+            HashMapEntry::assert([$key => $v], $varName);
         }
 
         return $value;

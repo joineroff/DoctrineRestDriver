@@ -42,7 +42,7 @@ class Str
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function assert($value, $varName) 
+    public static function assert($value, $varName)
     {
         NotNil::assert($value, $varName);
         return !is_string($value) ? Exceptions::InvalidTypeException('string', $varName, $value) : $value;

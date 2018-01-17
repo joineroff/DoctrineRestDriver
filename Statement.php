@@ -30,6 +30,7 @@ use Circle\DoctrineRestDriver\Types\SqlQuery;
 use Circle\DoctrineRestDriver\Validation\Assertions;
 use Doctrine\DBAL\Driver\Statement as StatementInterface;
 
+
 /**
  * Executes the statement - sends requests to an api
  *
@@ -169,8 +170,10 @@ class Statement implements \IteratorAggregate, StatementInterface
         $query   = SqlQuery::setParams($this->query, $params !== null ? $params : $this->params);
         $request = $this->authStrategy->transformRequest($this->mysqlToRequest->transform($query));
 
+
         try {
             $response     = $this->restClient->send($request);
+
             $result       = new Result($query, $response, $this->options);
 
             $this->result = $result->get();

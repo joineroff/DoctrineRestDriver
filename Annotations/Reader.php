@@ -37,7 +37,7 @@ class Reader
     /**
      * Reader constructor.
      */
-    public function __construct() 
+    public function __construct()
     {
         $this->annotationReader = new AnnotationReader();
     }
@@ -49,7 +49,7 @@ class Reader
      * @param  string           $namespace
      * @return null|string
      */
-    public function read(\ReflectionClass $class, $namespace) 
+    public function read(\ReflectionClass $class, $namespace)
     {
         $annotation = $this->annotationReader->getClassAnnotation($class, $namespace);
 

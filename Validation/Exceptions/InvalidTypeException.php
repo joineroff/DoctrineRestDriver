@@ -34,7 +34,7 @@ class InvalidTypeException extends ValidationException
      * @param string $key
      * @param mixed  $value
      */
-    public function __construct($expectedType, $key, $value) 
+    public function __construct($expectedType, $key, $value)
     {
         parent::__construct('The given value ' . $value . ' for "' . $key . '" is not of type ' . $expectedType);
     }

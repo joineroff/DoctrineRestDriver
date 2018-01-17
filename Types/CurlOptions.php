@@ -51,12 +51,13 @@ class CurlOptions extends \ArrayObject
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $options) 
+    public static function create(array $options)
     {
         HashMap::assert($options, 'options');
 
         $filteredKeys = array_filter(
-            array_keys($options), function ($key) {
+            array_keys($options),
+            function ($key) {
                 return strpos($key, 'CURLOPT_') === 0;
             }
         );
@@ -65,7 +66,8 @@ class CurlOptions extends \ArrayObject
         $keys = array_map(
             function ($key) {
                 return constant($key);
-            }, array_keys($filteredOptions)
+            },
+            array_keys($filteredOptions)
         );
 
         $optionsWithIntKeys = array_combine($keys, array_values($filteredOptions));

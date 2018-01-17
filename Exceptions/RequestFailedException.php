@@ -39,7 +39,7 @@ class RequestFailedException extends DoctrineRestDriverException
      * @param int     $errorCode
      * @param string  $errorMessage
      */
-    public function __construct(Request $request, $errorCode, $errorMessage) 
+    public function __construct(Request $request, $errorCode, $errorMessage)
     {
         parent::__construct('Execution failed for request: ' . $request . ': HTTPCode ' . $errorCode . ', body ' . $errorMessage, $errorCode);
     }

@@ -35,21 +35,24 @@ class OrderingHeaders
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $tokens) 
+    public static function create(array $tokens)
     {
         HashMap::assert($tokens, 'tokens');
 
-        if (empty($tokens['ORDER'])) { return [];
+        if (empty($tokens['ORDER'])) {
+            return [];
         }
 
         $headers = [];
         $orderQueryArr = array_map(
             function ($order) {
                 $query = end($order['no_quotes']['parts']);
-                if (empty($query)) { return null;
+                if (empty($query)) {
+                    return null;
                 }
                 return !isset($order['direction']) ? $query : $query . ' ' . $order['direction'];
-            }, $tokens['ORDER']
+            },
+            $tokens['ORDER']
         );
         array_push($headers, 'Order: '.implode(',', $orderQueryArr));
         return $headers;

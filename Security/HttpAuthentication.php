@@ -40,7 +40,7 @@ class HttpAuthentication implements AuthStrategy
      *
      * @param array $config
      */
-    public function __construct(array $config) 
+    public function __construct(array $config)
     {
         $this->config = $config;
     }
@@ -48,7 +48,7 @@ class HttpAuthentication implements AuthStrategy
     /**
      * {@inheritdoc}
      */
-    public function transformRequest(Request $request) 
+    public function transformRequest(Request $request)
     {
         $options  = $request->getCurlOptions();
         $headers  = empty($options[CURLOPT_HTTPHEADER]) ? [] : $options[CURLOPT_HTTPHEADER];

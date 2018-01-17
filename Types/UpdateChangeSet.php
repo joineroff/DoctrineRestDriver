@@ -36,7 +36,7 @@ class UpdateChangeSet
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $tokens) 
+    public static function create(array $tokens)
     {
         HashMap::assert($tokens, 'tokens');
 
@@ -44,14 +44,16 @@ class UpdateChangeSet
             function ($token) {
                 $segments = explode('=', $token['base_expr']);
                 return trim($segments[0]);
-            }, $tokens['SET']
+            },
+            $tokens['SET']
         );
 
         $values = array_map(
             function ($token) {
                 $segments = explode('=', $token['base_expr']);
                 return trim(Value::create($segments[1]));
-            }, $tokens['SET']
+            },
+            $tokens['SET']
         );
 
         return array_combine($columns, $values);

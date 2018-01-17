@@ -33,7 +33,7 @@ class Json implements Formatter
      * @param  array $values
      * @return string
      */
-    public function encode(array $values) 
+    public function encode(array $values)
     {
         return json_encode($values);
     }
@@ -44,7 +44,7 @@ class Json implements Formatter
      * @param  string $json
      * @return array
      */
-    public function decode($json) 
+    public function decode($json)
     {
         return json_decode($json, true);
     }

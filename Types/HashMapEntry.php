@@ -40,11 +40,13 @@ class HashMapEntry
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function assert($value, $varName) 
+    public static function assert($value, $varName)
     {
-        if(!is_array($value)) { return Exceptions::InvalidTypeException('HashMapEntry', $varName, $value);
+        if (!is_array($value)) {
+            return Exceptions::InvalidTypeException('HashMapEntry', $varName, $value);
         }
-        if(count($value) > 1) { return Exceptions::InvalidTypeException('HashMapEntry', $varName, $value);
+        if (count($value) > 1) {
+            return Exceptions::InvalidTypeException('HashMapEntry', $varName, $value);
         }
 
         $keys = array_keys($value);
@@ -66,7 +68,7 @@ class HashMapEntry
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function assertExists($hashMap, $entryName, $varName) 
+    public static function assertExists($hashMap, $entryName, $varName)
     {
         HashMap::assert($hashMap, $varName);
         return array_key_exists($entryName, $hashMap) ? $hashMap : Exceptions::InvalidTypeException('HashMapEntry', $varName . '[\'' . $entryName . '\']', 'undefined');

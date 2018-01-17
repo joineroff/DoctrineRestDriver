@@ -37,10 +37,11 @@ class MetaData
     /**
      * MetaData constructor
      */
-    public function __construct() 
+    public function __construct()
     {
         $this->em = array_filter(
-            debug_backtrace(), function ($trace) {
+            debug_backtrace(),
+            function ($trace) {
                 return isset($trace['object']) && $trace['object'] instanceof ObjectManager;
             }
         );
@@ -51,13 +52,15 @@ class MetaData
      *
      * @return array
      */
-    public function getEntityNamespaces() 
+    public function getEntityNamespaces()
     {
         return array_reduce(
-            $this->get(), function ($carry, $item) {
+            $this->get(),
+            function ($carry, $item) {
                 $carry[$item->table['name']] = $item->getName();
                 return $carry;
-            }, []
+            },
+            []
         );
     }
 
@@ -66,7 +69,7 @@ class MetaData
      *
      * @return array
      */
-    public function get() 
+    public function get()
     {
         return empty($this->em) ? [] : array_pop($this->em)['object']->getMetaDataFactory()->getAllMetaData();
     }

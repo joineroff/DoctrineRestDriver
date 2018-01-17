@@ -43,9 +43,10 @@ class Driver implements DriverInterface
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function connect(array $params, $username = null, $password = null, array $driverOptions = array()) 
+    public function connect(array $params, $username = null, $password = null, array $driverOptions = array())
     {
-        if (!empty($this->connection)) { return $this->connection;
+        if (!empty($this->connection)) {
+            return $this->connection;
         }
 
         $metaData         = new MetaData();
@@ -56,7 +57,7 @@ class Driver implements DriverInterface
     /**
      * {@inheritdoc}
      */
-    public function getDatabasePlatform() 
+    public function getDatabasePlatform()
     {
         return new MySqlPlatform();
     }
@@ -64,7 +65,7 @@ class Driver implements DriverInterface
     /**
      * {@inheritdoc}
      */
-    public function getSchemaManager(AbstractConnection $conn) 
+    public function getSchemaManager(AbstractConnection $conn)
     {
         return new MySqlSchemaManager($conn);
     }
@@ -72,7 +73,7 @@ class Driver implements DriverInterface
     /**
      * {@inheritdoc}
      */
-    public function getName() 
+    public function getName()
     {
         return 'circle_rest';
     }
@@ -80,7 +81,7 @@ class Driver implements DriverInterface
     /**
      * {@inheritdoc}
      */
-    public function getDatabase(AbstractConnection $conn) 
+    public function getDatabase(AbstractConnection $conn)
     {
         return 'rest_database';
     }

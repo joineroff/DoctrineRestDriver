@@ -48,7 +48,7 @@ class RequestFactory
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public function createOne($method, array $tokens, array $options, DataSource $annotation = null) 
+    public function createOne($method, array $tokens, array $options, DataSource $annotation = null)
     {
         return new Request(
             [

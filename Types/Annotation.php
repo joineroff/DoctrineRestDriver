@@ -38,9 +38,10 @@ class Annotation
      * @param  string       $method
      * @return DataSource|null
      */
-    public static function get(RoutingTable $annotations, $entityAlias, $method) 
+    public static function get(RoutingTable $annotations, $entityAlias, $method)
     {
-        if (!self::exists($annotations, $entityAlias, $method)) { return null;
+        if (!self::exists($annotations, $entityAlias, $method)) {
+            return null;
         }
 
         return $annotations->get($entityAlias)->$method();
@@ -54,7 +55,7 @@ class Annotation
      * @param  string       $method
      * @return boolean
      */
-    public static function exists(RoutingTable $annotations = null, $entityAlias, $method) 
+    public static function exists(RoutingTable $annotations = null, $entityAlias, $method)
     {
         return !empty($annotations) && $annotations->get($entityAlias) !== null && $annotations->get($entityAlias)->$method() !== null;
     }

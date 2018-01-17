@@ -40,7 +40,7 @@ class Authentication
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function create(array $options) 
+    public static function create(array $options)
     {
         $authenticatorClass = !empty($options['driverOptions']['authenticator_class']) ? $options['driverOptions']['authenticator_class'] : 'NoAuthentication';
         $className          = preg_match('/\\\\/', $authenticatorClass) ? $authenticatorClass : 'Circle\DoctrineRestDriver\Security\\' . $authenticatorClass;
@@ -58,7 +58,7 @@ class Authentication
      *
      * @SuppressWarnings("PHPMD.StaticAccess")
      */
-    public static function assert($instance) 
+    public static function assert($instance)
     {
         return !$instance instanceof AuthStrategy ? Exceptions::invalidAuthStrategyException(get_class($instance)) : $instance;
     }
