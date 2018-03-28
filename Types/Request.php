@@ -142,7 +142,7 @@ class Request
      */
     public function getQuery()
     {
-        return $this->query;
+        return str_replace(' ', '%20', $this->query);
     }
 
     /**
@@ -152,7 +152,7 @@ class Request
      */
     public function getUrlAndQuery()
     {
-        return $this->url . '?' . $this->query;
+        return $this->url . '?' . str_replace(' ', '%20', $this->query);
     }
 
     /**
