@@ -128,6 +128,9 @@ class Statement implements \IteratorAggregate, StatementInterface
      */
     public function bindValue($param, $value, $type = null)
     {
+        if (is_string($value)) {
+            $value = str_replace(',', '\;', $value);
+        }
         $this->params[$param] = $value;
         return true;
     }

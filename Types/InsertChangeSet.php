@@ -80,6 +80,9 @@ class InsertChangeSet
 
         return array_map(
             function ($value) {
+                if (is_string($value)) {
+                    $value = str_replace('\;', ',', $value);
+                }
                 return Value::create($value);
             },
             $values
